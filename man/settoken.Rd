@@ -7,11 +7,12 @@
 settoken(atoken)
 }
 \arguments{
-\item{atoken}{character vector}
+\item{atoken}{character}
 }
 \description{
-request your token from [aqicn.org](http://aqicn.org/data-platform/token/#/)
+request your personal token from \url{http://aqicn.org/data-platform/token/}
 }
 \examples{
+setenvironment()
 settoken("demo")
 }

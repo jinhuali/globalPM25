@@ -7,7 +7,7 @@
 getPMbyCityNames(citynames)
 }
 \arguments{
-\item{citynames}{a list of city names represented in character vector to be queryed}
+\item{citynames}{a vector of city names to be queryed}
 }
 \value{
 data frame containing location, time and PM2.5 level
@@ -16,5 +16,6 @@ data frame containing location, time and PM2.5 level
 get PM2.5 level at a list of cities
 }
 \examples{
+setenvironment()
 getPMbyCityNames("newyork")
 }

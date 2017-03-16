@@ -2,5 +2,6 @@
 
 export(getPMbyCityNames)
 export(getPMnearme)
+export(setenvironment)
 export(settoken)
 importFrom(jsonlite,fromJSON)

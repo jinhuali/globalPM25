@@ -1,14 +1,16 @@
 #' get city PM2.5 level
+#'
 #' @description get PM2.5 level at a list of cities
-#' @param citynames a list of city names represented in character vector to be queryed
+#' @param citynames a vector of city names to be queryed
 #' @return data frame containing location, time and PM2.5 level
 #' @importFrom jsonlite fromJSON
 #' @export
 #' @examples
+#' setenvironment()
 #' getPMbyCityNames("newyork")
 getPMbyCityNames <- function(citynames){
-  baseURL = get("baseURL", env = cacheEnv)
-  atoken = get("atoken", env = cacheEnv)
+  baseURL = get("baseURL", envir = cacheEnv)
+  atoken = get("atoken", envir = cacheEnv)
   mydata <- fromJSON(sprintf("%s/feed/%s/?token=%s", baseURL, citynames, atoken), flatten=TRUE)
   if(mydata$status != "ok"){
     stop(mydata$data)
