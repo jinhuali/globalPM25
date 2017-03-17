@@ -10,12 +10,13 @@ getPMbyCityNames(citynames)
 \item{citynames}{a vector of city names to be queryed}
 }
 \value{
-data frame containing location, time and PM2.5 level
+a tibble
 }
 \description{
-get PM2.5 level at a list of cities
+query PM2.5 level at a list of cities. return a tibble containing Pm2.5 level, station location, local and UTC time
 }
 \examples{
 \dontshow{setenvironment()}
 getPMbyCityNames("newyork")
+getPMbyCityNames(c("tokyo", "madrid"))
 }

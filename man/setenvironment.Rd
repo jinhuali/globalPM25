@@ -12,4 +12,3 @@ Assign constants such as URL and API token to a new environment that can be acce
 \examples{
 setenvironment()
 }
-\keyword{internal}

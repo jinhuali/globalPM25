@@ -3,7 +3,6 @@
 #' @export
 #' @examples
 #' setenvironment()
-#' @keywords internal
 setenvironment <- function(){
   cacheEnv <<- new.env()
   assign(".atoken", "c37e84c905b04779aadbd46685abebbc9089b243", cacheEnv)

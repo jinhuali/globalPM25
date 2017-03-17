@@ -7,7 +7,7 @@
 getPMnearme()
 }
 \value{
-data frame containing location, time and PM2.5 level
+a tibble containing location, time and PM2.5 level
 }
 \description{
 get PM2.5 level at a station that closest to you (based on your computer ip address)
