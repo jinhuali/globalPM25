@@ -2,13 +2,14 @@
 % Please edit documentation in R/setenvironment.R
 \name{setenvironment}
 \alias{setenvironment}
-\title{Set an environment to access some useful constants within the package}
+\title{Set an environment to access useful constants that are shared within the package}
 \usage{
 setenvironment()
 }
 \description{
-Assign some constants such as URL and API token to a new environment that can be accessed, modified and saved within the package
+Assign constants such as URL and API token to a new environment that can be accessed and modified
 }
 \examples{
 setenvironment()
 }
+\keyword{internal}

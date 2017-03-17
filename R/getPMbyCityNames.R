@@ -6,12 +6,12 @@
 #' @importFrom jsonlite fromJSON
 #' @export
 #' @examples
-#' setenvironment()
+#' \dontshow{setenvironment()}
 #' getPMbyCityNames("newyork")
 getPMbyCityNames <- function(citynames){
-  baseURL = get("baseURL", envir = cacheEnv)
-  atoken = get("atoken", envir = cacheEnv)
-  mydata <- fromJSON(sprintf("%s/feed/%s/?token=%s", baseURL, citynames, atoken), flatten=TRUE)
+  baseURL = get(".baseURL", envir = cacheEnv)
+  atoken = get(".atoken", envir = cacheEnv)
+  mydata <- jsonlite::fromJSON(sprintf("%s/feed/%s/?token=%s", baseURL, citynames, atoken), flatten=TRUE)
   if(mydata$status != "ok"){
     stop(mydata$data)
   }

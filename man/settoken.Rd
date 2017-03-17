@@ -4,15 +4,15 @@
 \alias{settoken}
 \title{Set your API toke}
 \usage{
-settoken(atoken)
+settoken(token)
 }
 \arguments{
-\item{atoken}{character}
+\item{token}{character}
 }
 \description{
-request your personal token from \url{http://aqicn.org/data-platform/token/}
+request your personal \code{token} from \url{http://aqicn.org/data-platform/token/}
 }
 \examples{
-setenvironment()
+\dontshow{setenvironment()}
 settoken("demo")
 }

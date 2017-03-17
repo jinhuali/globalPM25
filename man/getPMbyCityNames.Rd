@@ -16,6 +16,6 @@ data frame containing location, time and PM2.5 level
 get PM2.5 level at a list of cities
 }
 \examples{
-setenvironment()
+\dontshow{setenvironment()}
 getPMbyCityNames("newyork")
 }

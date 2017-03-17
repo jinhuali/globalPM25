@@ -1,11 +1,11 @@
 #' Set your API toke
 #'
-#' @description request your personal token from \url{http://aqicn.org/data-platform/token/}
-#' @param atoken character
+#' @description request your personal \code{token} from \url{http://aqicn.org/data-platform/token/}
+#' @param token character
 #' @export
 #' @examples
-#' setenvironment()
+#' \dontshow{setenvironment()}
 #' settoken("demo")
-settoken <- function(atoken){
-  assign("atoken", atoken, envir = cacheEnv)
+settoken <- function(token){
+  assign(".atoken", token, envir = cacheEnv)
 }
