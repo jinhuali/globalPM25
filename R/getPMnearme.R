@@ -4,7 +4,6 @@
 #' @return a tibble containing location, time and PM2.5 level
 #' @export
 #' @examples
-#' \dontshow{setenvironment()}
 #' getPMnearme()
 getPMnearme <- function(){
   getPMbyCityNames("here")

@@ -7,11 +7,18 @@
 #' @importFrom jsonlite fromJSON
 #' @export
 #' @examples
-#' \dontshow{setenvironment()}
 #' getPMbylatlon(37.774929, -122.419416)
 getPMbylatlon <- function(lat, lon){
-  baseURL = get(".baseURL", envir = cacheEnv)
-  atoken = get(".atoken", envir = cacheEnv)
+  if(missing(lat) || missing(lon)){
+    stop("missing argument")
+  }
+
+  if(lat < -90 || lat > 90 || lon < -180 || lon > 180){
+    stop("out of range")
+  }
+
+  baseURL = getglobalPM25Options()$baseURL
+  atoken = getglobalPM25Options()$token
   mydata <- jsonlite::fromJSON(sprintf("%s/feed/geo:%f;%f/?token=%s", baseURL, lat, lon, atoken), flatten=TRUE)
   processPMdata(mydata)
 }

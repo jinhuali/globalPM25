@@ -2,9 +2,9 @@
 % Please edit documentation in R/getPMbyCityNames.R
 \name{getPMbyCityNames}
 \alias{getPMbyCityNames}
-\title{get city PM2.5 level}
+\title{get PM2.5 level at a city or a vector of cities}
 \usage{
-getPMbyCityNames(citynames)
+getPMbyCityNames(citynames = "san jose")
 }
 \arguments{
 \item{citynames}{a vector of city names to be queryed}
@@ -13,10 +13,9 @@ getPMbyCityNames(citynames)
 a tibble
 }
 \description{
-query PM2.5 level at a list of cities. return a tibble containing Pm2.5 level, station location, local and UTC time
+query PM2.5 level at a list of cities (default "san jose"). return a tibble containing Pm2.5 level, station location, local and UTC time. The results are sorted by PM2.5 levels
 }
 \examples{
-\dontshow{setenvironment()}
-getPMbyCityNames("newyork")
+getPMbyCityNames("san jose")
 getPMbyCityNames(c("tokyo", "madrid"))
 }

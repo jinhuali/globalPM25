@@ -4,21 +4,20 @@
 \alias{getPMinRegion}
 \title{get PM2.5 within a city region}
 \usage{
-getPMinRegion(cityname, d = 50)
+getPMinRegion(cityname = "san jose", distance = 50)
 }
 \arguments{
 \item{cityname}{character}
 
-\item{d}{distance}
+\item{distance}{double}
 }
 \value{
 a tibble
 }
 \description{
-get PM2.5 levels of all the stations within a city region (default distance 50 miles). return local time, station location and PM2.5 level
+get PM2.5 levels of all the stations within a city region (default \code{cityname} "san jose" and \code{distance} 50 miles). return local time, station location and PM2.5 level. The results are sorted by PM2.5 levels
 }
 \examples{
-\dontshow{setenvironment()}
-getPMinRegion("newyork")
-getPMinRegion("newyork", 200)
+getPMinRegion("san jose")
+getPMinRegion("san jose", 200)
 }

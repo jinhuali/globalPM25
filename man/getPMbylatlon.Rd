@@ -18,6 +18,5 @@ tibble
 query PM2.5 level at the station closest to a latitude and longitude. return a tibble containing Pm2.5 level, station location, local and UTC time
 }
 \examples{
-\dontshow{setenvironment()}
 getPMbylatlon(37.774929, -122.419416)
 }

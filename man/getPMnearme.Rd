@@ -13,6 +13,5 @@ a tibble containing location, time and PM2.5 level
 get PM2.5 level at a station that closest to you (based on your computer ip address)
 }
 \examples{
-\dontshow{setenvironment()}
 getPMnearme()
 }
