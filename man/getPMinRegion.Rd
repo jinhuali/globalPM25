@@ -2,22 +2,25 @@
 % Please edit documentation in R/getPMinRegion.R
 \name{getPMinRegion}
 \alias{getPMinRegion}
-\title{get PM2.5 within a city region}
+\title{get real-time PM2.5 within a city region or within a geographic boundary}
 \usage{
-getPMinRegion(cityname = "san jose", distance = 50)
+getPMinRegion(cityname, distance = 50, geobound = NULL)
 }
 \arguments{
 \item{cityname}{character}
 
 \item{distance}{double}
+
+\item{geobound}{numeric vector of length 4L in the format c(lat1, lon1, lat2, lon2)}
 }
 \value{
 a tibble
 }
 \description{
-get PM2.5 levels of all the stations within a city region (default \code{cityname} "san jose" and \code{distance} 50 miles). return local time, station location and PM2.5 level. The results are sorted by PM2.5 levels
+get real-time PM2.5 levels of all the stations within a city region (default \code{distance} 50 miles) or geographical bound in the format c(lat1, lon1, lat2, lon2). Return local time, station location and PM2.5 level. The results are sorted by PM2.5 levels
 }
 \examples{
-getPMinRegion("san jose")
-getPMinRegion("san jose", 200)
+getPMinRegion("chicago")
+getPMinRegion("chicago", 200)
+getPMinRegion(geobound = c(38.164368, -122.85501, 37.203647, -121.431634)) #san francisco bay area
 }

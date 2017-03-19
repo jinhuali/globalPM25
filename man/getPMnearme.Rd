@@ -2,7 +2,7 @@
 % Please edit documentation in R/getPMnearme.R
 \name{getPMnearme}
 \alias{getPMnearme}
-\title{get PM2.5 level near you}
+\title{get real-time PM2.5 level near you}
 \usage{
 getPMnearme()
 }
@@ -10,7 +10,7 @@ getPMnearme()
 a tibble containing location, time and PM2.5 level
 }
 \description{
-get PM2.5 level at a station that closest to you (based on your computer ip address)
+get real-time PM2.5 level at a station that closest to you (based on your computer ip address)
 }
 \examples{
 getPMnearme()

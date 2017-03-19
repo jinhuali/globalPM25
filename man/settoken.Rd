@@ -13,7 +13,7 @@ settoken(token)
 the changed options
 }
 \description{
-Set the token
+request your peronal token from \url{http://aqicn.org/data-platform/token/#/}
 }
 \examples{
 \dontrun{

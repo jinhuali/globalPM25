@@ -1,15 +1,14 @@
 Package: globalPM25
-Title: What the Package Does (one line, title case)
+Title: Query real-time local air pollute PM2.5 level near you, at any city around the world or a user-defined geographical boundary
 Version: 0.1
 Authors@R: person("Jinhua", "Li", email = "jinhua.li000@gmail.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: The real-time data soruce is coming from \url{aqicn.org}. First, Request your personal API token from \url{http://aqicn.org/data-platform/token/#/}. Set your personal token. Then you can query PM2.5 level near you, at any city or a list of cities worldwide, in any city area, or within a geographical boundary. 
 Depends: R (>= 3.3.2)
 Imports: jsonlite, tibble, dplyr, utils
 Suggests: testthat
-License: GPL-2
+License: GPL(>=2)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
 Author: jinhuali
 Maintainer: jinhuali <jinhua.li000@gmail.com>
-Suggests: testthat

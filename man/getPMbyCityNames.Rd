@@ -2,7 +2,7 @@
 % Please edit documentation in R/getPMbyCityNames.R
 \name{getPMbyCityNames}
 \alias{getPMbyCityNames}
-\title{get PM2.5 level at a city or a vector of cities}
+\title{get real-timePM2.5 level at a city or a vector of cities}
 \usage{
 getPMbyCityNames(citynames = "san jose")
 }
@@ -13,7 +13,7 @@ getPMbyCityNames(citynames = "san jose")
 a tibble
 }
 \description{
-query PM2.5 level at a list of cities (default "san jose"). return a tibble containing Pm2.5 level, station location, local and UTC time. The results are sorted by PM2.5 levels
+Query real-time  PM2.5 levels measured by US EPA's AQI (Air Quality Index) and APL (Air Pollution Level) at a list of cities (default "san jose"). Return a tibble containing PM2.5 level, obervation station location, and local time. The results are sorted by PM2.5 AQI
 }
 \examples{
 getPMbyCityNames("san jose")

@@ -1,10 +1,11 @@
-#' get PM2.5 level at a city or a vector of cities
+#' get real-timePM2.5 level at a city or a vector of cities
 #'
-#' @description query PM2.5 level at a list of cities (default "san jose"). return a tibble containing Pm2.5 level, station location, local and UTC time. The results are sorted by PM2.5 levels
+#' @description Query real-time  PM2.5 levels measured by US EPA's AQI (Air Quality Index) and APL (Air Pollution Level) at a list of cities (default "san jose"). Return a tibble containing PM2.5 level, obervation station location, and local time. The results are sorted by PM2.5 AQI
 #' @param citynames a vector of city names to be queryed
 #' @return a tibble
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble tibble
+#' @importFrom dplyr select arrange
 #' @export
 #' @examples
 #' getPMbyCityNames("san jose")
@@ -12,11 +13,17 @@
 getPMbyCityNames <- function(citynames = "san jose"){
   baseURL = getglobalPM25Options()$baseURL
   atoken = getglobalPM25Options()$token
+
   rslt <- list()
   for(cityname in citynames){
     mydata <- jsonlite::fromJSON(sprintf("%s/feed/%s/?token=%s", baseURL, cityname, atoken), flatten=TRUE)
-    rslt <- rbind(rslt, processPMdata(mydata))
+    arslt <- processPMdata(mydata)
+    print(sprintf("The air qaulity level at %s is %s", arslt$city, arslt$APL))
+    rslt <- rbind(rslt, arslt)
   }
-  rslt <- rslt %>% dplyr::arrange(desc(pm25))
+
+  rslt <- rslt %>%
+    dplyr::select(city, localtime, APL, pm25, lat, lon, localtimezone) %>%
+    dplyr::arrange(desc(pm25))
   tibble::as_tibble(rslt)
 }
