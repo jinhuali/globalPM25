@@ -11,8 +11,8 @@
 #' @importFrom ggplot2 qplot
 #' @export
 #' @examples
-#' getPMinRegion("chicago")
-#' getPMinRegion("chicago", 200)
+#' getPMinRegion("beijing")
+#' getPMinRegion("beijing", 200)
 #' getPMinRegion(geobound = c(38.164368, -122.85501, 37.203647, -121.431634)) #san francisco bay area
 getPMinRegion <- function(cityname, distance = 50, geobound = NULL){
   if(!missing(cityname) && distance <= 0){
