@@ -7,6 +7,8 @@
 #' @return a tibble
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr %>% arrange desc select
+#' @importFrom stats na.omit
+#' @importFrom ggplot2 qplot
 #' @export
 #' @examples
 #' getPMinRegion("chicago")
@@ -49,23 +51,34 @@ getPMinRegion <- function(cityname, distance = 50, geobound = NULL){
   }else if(length(mydata$data) == 0L){
     stop("Empty data")
   }
+
+  #browser()
   mydata <- mydata$data
   mydata$aqi[mydata$aqi == "-"] = NA
+  rslt <- list()
   rslt <- cbind("localtime" = localtime, mydata)
   rslt <- cbind("localtimezone" = localtimezone, rslt)
   rslt <- cbind("city" = paste(cityname, distance, sep = "-"), rslt)
   #browser()
-  rslt <- rslt %>% dplyr::select(city, localtime, lat, lon, aqi, localtimezone)
-  names(rslt)[5] <- "pm25"
+  rslt <- rslt %>% dplyr::select(uid, city, localtime, lat, lon, aqi, localtimezone)
+  names(rslt)[6] <- "pm25"
+  names(rslt)[1] <- "stationid"
   rslt$pm25 <- as.numeric(rslt$pm25)
-  #browser()
+  rslt$stationid <- as.numeric(rslt$stationid)
   apldesc <- getglobalPM25Options()$apl_description
   apl <- sapply(rslt$pm25, function(x) if(is.na(x)) x else if(x>300L) apldesc[6L] else if(x>200L) apldesc[5L] else if(x>150L) apldesc[4L] else if(x>100L) apldesc[3L] else if(x>50) apldesc[2L]  else apldesc[1L])
   apl <- as.character(apl)
   rslt <- cbind(rslt, APL = apl)
 
   rslt <- rslt %>%
-    dplyr::select(city, localtime, APL, pm25, lat, lon, localtimezone) %>%
+    dplyr::select(stationid, city, localtime, APL, pm25, lat, lon, localtimezone) %>%
     dplyr::arrange(desc(pm25))
-  tibble::as_tibble(rslt)
+  dat <- tibble::as_tibble(rslt)
+
+  #g <- ggplot2::ggplot(ggplot2::aes(x = lon, y = lat, size = pm25, colour = APL), data = na.omit(dat))
+  #g <- g + ggplot2::geom_point()
+  #browser()
+  print(qplot(x = lon, y = lat, colour = APL, size = pm25, data = na.omit(dat)))
+
+  dat
 }

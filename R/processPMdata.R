@@ -39,10 +39,11 @@ processPMdata <- function(mydata){
     apl <- if(mypm25>300L) apldesc[6L] else if(mypm25>200L) apldesc[5L] else if(mypm25>150L) apldesc[4L] else if(mypm25>100L) apldesc[3L] else if(mypm25>50) apldesc[2L]  else apldesc[1L]
   }
 
+  myid <- as.numeric(mydata$data$idx)
   mytime <- as.character(mydata$data$time$s)
   mytz <- mydata$data$time$tz
   mytz <- paste0(substr(mytz, 1,3), substr(mytz, 5, 6))
   myUTCtime <- strptime(paste0(mytime, mytz, sep=" "), format="%Y-%m-%d %H:%M:%S %z", tz = "UTC")
 
-  tibble::tibble(city = mycityfullname, lat = mylat, lon = mylon, pm25 = mypm25, APL = apl, localtime = mytime, localtimezone = mytz, UTCtime = as.character(myUTCtime))
+  tibble::tibble(stationid = myid, city = mycityfullname, lat = mylat, lon = mylon, pm25 = mypm25, APL = apl, localtime = mytime, localtimezone = mytz, UTCtime = as.character(myUTCtime))
 }

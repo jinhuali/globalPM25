@@ -6,6 +6,8 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble tibble
 #' @importFrom dplyr select arrange
+#' @importFrom stats na.omit reorder
+#' @importFrom ggplot2 geom_bar ggplot aes coord_flip
 #' @export
 #' @examples
 #' getPMbyCityNames("san jose")
@@ -23,7 +25,14 @@ getPMbyCityNames <- function(citynames = "san jose"){
   }
 
   rslt <- rslt %>%
-    dplyr::select(city, localtime, APL, pm25, lat, lon, localtimezone) %>%
+    dplyr::select(stationid, city, localtime, APL, pm25, lat, lon, localtimezone) %>%
     dplyr::arrange(desc(pm25))
-  tibble::as_tibble(rslt)
+  dat <- tibble::as_tibble(rslt)
+
+  g <- ggplot(aes(x = reorder(city, pm25), y = pm25), data = na.omit(dat)) +
+    geom_bar(stat = "identity", color = "#E69F00", fill = "#E69F00") +
+    coord_flip()
+  print(g)
+
+  dat
 }

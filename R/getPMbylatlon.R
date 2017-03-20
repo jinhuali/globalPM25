@@ -23,6 +23,6 @@ getPMbylatlon <- function(lat, lon){
   atoken = getglobalPM25Options()$token
   mydata <- jsonlite::fromJSON(sprintf("%s/feed/geo:%f;%f/?token=%s", baseURL, lat, lon, atoken), flatten=TRUE)
   rslt <- processPMdata(mydata)
-  rslt <- rslt %>% dplyr::select(city, localtime, APL, pm25, lat, lon, localtimezone)
+  rslt <- rslt %>% dplyr::select(stationid, city, localtime, APL, pm25, lat, lon, localtimezone)
   tibble::as_tibble(rslt)
 }

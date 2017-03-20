@@ -8,7 +8,7 @@ globalPM25.options <- list(token = "c37e84c905b04779aadbd46685abebbc9089b243",
                            worldcities = c('mumbai', 'tokyo', 'seoul', 'delhi', 'jakarta', 'paris', 'moscow', 'mexico city', 'san jose',
                                             'Shanghai', 'beijing', 'hongkong', 'istanbul', 'london', 'taipei', 'bangkok', 'chicago', 'newyork',
                                             'manila', 'buenos aires', 'seattle', 'dubai', 'sydney', 'melbourne',
-                                            'singapore', 'madrid', 'bangalore', 'chennai', 'kolkata', 'osaka', 'bangalore',
+                                            'singapore', 'madrid', 'chennai', 'kolkata', 'osaka', 'bangalore',
                                             'kuala lumpur', 'milan', 'berlin', 'Tel Aviv', 'lisbon', 'Vancouver', 'toronto', 'Munich',
                                             'Copenhagen'))
 
@@ -29,7 +29,7 @@ resetOptions <- function() {
                                                    worldcities = c('mumbai', 'tokyo', 'seoul', 'delhi', 'jakarta', 'paris', 'moscow', 'mexico city', 'san jose',
                                                                     'Shanghai', 'beijing', 'hongkong', 'istanbul', 'london', 'taipei', 'bangkok', 'chicago', 'newyork',
                                                                     'manila', 'buenos aires', 'seattle', 'dubai', 'sydney', 'melbourne',
-                                                                    'singapore', 'madrid', 'bangalore', 'chennai', 'kolkata', 'osaka', 'bangalore',
+                                                                    'singapore', 'madrid', 'chennai', 'kolkata', 'osaka', 'bangalore',
                                                                     'kuala lumpur', 'milan', 'berlin', 'Tel Aviv', 'lisbon', 'Vancouver', 'toronto', 'Munich',
                                                                     'Copenhagen')))
 
