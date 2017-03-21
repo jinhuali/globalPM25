@@ -1,0 +1,6 @@
+"0","topTenTz <- tzAndOs %>%
+    group_by(tz) %>%
+    summarize(count = n()) %>%
+    arrange(desc(count)) %>%
+    slice(seq_len(10)) %>%
+    select(tz, count)"

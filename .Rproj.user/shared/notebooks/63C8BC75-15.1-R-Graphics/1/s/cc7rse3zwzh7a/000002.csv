@@ -1,0 +1,25 @@
+"0","graphics:::plot.data.frame"
+"1","function (x, ...) 
+{
+    plot2 <- function(x, xlab = names(x)[1L], ylab = names(x)[2L], 
+        ...) plot(x[[1L]], x[[2L]], xlab = xlab, ylab = ylab, 
+        ...)
+    if (!is.data.frame(x)) 
+        stop(\"'plot.data.frame' applied to non data frame\")
+    if (ncol(x) == 1) {
+        x1 <- x[[1L]]
+        cl <- class(x1)
+        if (cl %in% c(\"integer\", \"numeric\")) 
+            stripchart(x1, ...)
+        else plot(x1, ...)
+    }
+    else if (ncol(x) == 2) {
+        plot2(x, ...)
+    }
+    else {
+        pairs(data.matrix(x), ...)
+    }
+}
+<bytecode: 0x7ffc53e7a6a8>
+<environment: namespace:graphics>
+"

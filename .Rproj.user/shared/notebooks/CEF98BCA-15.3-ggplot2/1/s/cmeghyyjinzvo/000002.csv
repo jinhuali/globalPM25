@@ -1,0 +1,3 @@
+"0","ggplot(data = topTenTz, aes(x = tz, y = count)) +
+    geom_bar(stat = \"identity\", color = \"#E69F00\", fill = \"#E69F00\") +
+    coord_flip()"

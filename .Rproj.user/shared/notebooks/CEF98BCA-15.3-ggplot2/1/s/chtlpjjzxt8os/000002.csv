@@ -1,0 +1,8 @@
+"0","p <- ggplot()
+p <- p + geom_point(aes(x = yield,
+                        y = variety,
+                        colour = year,
+                        group = year),
+                    data=barley)
+p <- p + facet_wrap(facets = ~site)
+p"

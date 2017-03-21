@@ -1,0 +1,6 @@
+"0","library(dplyr)"
+"0","tzAndOs <- tibble(tz = unlist(lapply(data, function(x) x$tz)),
+                  agent = unlist(lapply(data, function(x) x$a))) %>%
+    mutate(tz = ifelse(tz == \"\", \"Unknown\", tz),
+           os = ifelse(grepl(\"Windows\", agent), \"Windows\", \"Nonwindows\")) %>%
+    select(tz, os)"

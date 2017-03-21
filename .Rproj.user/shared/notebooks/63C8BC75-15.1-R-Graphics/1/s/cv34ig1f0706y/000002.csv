@@ -1,0 +1,7 @@
+"0","plot.new()
+plot.window(range(pressure$temperature), range(pressure$pressure))
+plot.xy(pressure, type = \"p\")
+lines(pressure)
+box()
+axis(1); axis(2); axis(3)
+title(xlab = names(pressure)[1], ylab = names(pressure)[2])"

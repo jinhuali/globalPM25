@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#' get real-timePM2.5 level at a city or a vector of cities\n#'\n#' @description Query real-time  PM2.5 levels measured by US EPA's AQI (Air Quality Index) and APL (Air Pollution Level) at a list of cities (default \"san jose\"). Return a tibble containing PM2.5 level, obervation station location, and local time. The results are sorted by PM2.5 AQI\n#' @param citynames a vector of city names to be queryed\n#' @return a tibble\n#' @importFrom jsonlite fromJSON\n#' @importFrom tibble tibble\n#' @importFrom dplyr select arrange\n#' @importFrom stats na.omit reorder\n#' @importFrom ggplot2 geom_bar ggplot aes coord_flip\n#' @export\n#' @examples\n#' getPMbyCityNames(\"san jose\")\n#' getPMbyCityNames(c(\"tokyo\", \"madrid\"))\ngetPMbyCityNames <- function(citynames = \"san jose\"){\n  baseURL = getglobalPM25Options()$baseURL\n  atoken = getglobalPM25Options()$token\n\n  rslt <- list()\n  for(cityname in citynames){\n    mydata <- jsonlite::fromJSON(sprintf(\"%s/feed/%s/?token=%s\", baseURL, cityname, atoken), flatten=TRUE)\n    arslt <- processPMdata(mydata)\n    print(sprintf(\"The air qaulity level at %s is %s\", arslt$city, arslt$APL))\n    rslt <- rbind(rslt, arslt)\n  }\n\n  rslt <- rslt %>%\n    dplyr::select(stationid, city, localtime, APL, pm25, lat, lon, localtimezone) %>%\n    dplyr::arrange(desc(pm25))\n  dat <- tibble::as_tibble(rslt)\n\n  if(length(citynames) > 1){\n    g <- ggplot2::ggplot(aes(x = reorder(city, pm25), y = pm25), data = na.omit(dat)) +\n      ggplot2::geom_bar(stat = \"identity\", color = \"#E69F00\", fill = \"#E69F00\") +\n      ggplot2::coord_flip()\n    print(g)\n  }\n\n  dat\n}\n",
+    "created" : 1490115045154.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "271223360",
+    "id" : "370D2F10",
+    "lastKnownWriteTime" : 1490115090,
+    "last_content_update" : 1490117223690,
+    "path" : "~/Stat290/Project/globalPM25/R/getPMbyCityNames.R",
+    "project_path" : "R/getPMbyCityNames.R",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

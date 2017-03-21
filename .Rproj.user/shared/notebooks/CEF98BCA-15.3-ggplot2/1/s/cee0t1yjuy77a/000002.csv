@@ -1,0 +1,4 @@
+"0","library(ggplot2)
+g <- ggplot(data = topTenTz, aes(x = tz, y = count)) +
+    geom_bar(stat = \"identity\" )
+g"

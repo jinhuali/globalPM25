@@ -1,0 +1,6 @@
+"0","topTenTzAndOs <- tzAndOs %>%
+    inner_join(topTenTz) %>%
+    group_by(tz, os) %>%
+    summarize(count = n()) %>%
+    ungroup %>%
+    mutate(tz = factor(tz, levels = rev(topTenTz$tz)))"

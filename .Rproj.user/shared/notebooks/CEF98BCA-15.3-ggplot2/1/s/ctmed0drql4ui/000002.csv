@@ -1,0 +1,2 @@
+"0","library(scales)
+norm + geom_point(colour = alpha(\"black\", 1/3))"

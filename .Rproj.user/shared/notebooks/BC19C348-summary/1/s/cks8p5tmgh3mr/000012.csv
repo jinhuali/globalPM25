@@ -1,0 +1,7 @@
+"0","require(globalPM25)"
+"0","data(""worlddat"")"
+"0","mapWorld <- borders(""world"", colour=""gray50"", fill=""gray50"") # create a layer of borders"
+"0","g <- ggplot(aes(x = lon, y = lat, colour = APL, size = pm25), data = na.omit(worlddat)) +   mapWorld"
+"0","g <- g + geom_point()"
+"0","g <- g + ggtitle(""PM2.5 data collected from stations at a list of selected cities worldwide; \n the data are sampled at 4pm PST, March 19, 2017"")"
+"0","g"

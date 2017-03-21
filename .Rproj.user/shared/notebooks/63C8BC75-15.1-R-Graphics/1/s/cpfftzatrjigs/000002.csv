@@ -1,0 +1,18 @@
+"0","ls(as.environment(\"package:graphics\"), pattern=\"^plot\")"
+"1","[1] \"plot\"          \"plot.default\"  \"plot.design\"   \"plot.function\"
+[5] \"plot.new\"      \"plot.window\"   \"plot.xy\"      
+"
+"1","plot
+
+plot.default
+
+plot.design
+
+plot.function
+
+plot.new
+
+plot.window
+
+plot.xy
+"

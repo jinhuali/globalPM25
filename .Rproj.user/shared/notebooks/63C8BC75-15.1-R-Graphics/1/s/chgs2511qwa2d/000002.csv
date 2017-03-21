@@ -1,0 +1,6 @@
+"0","plot"
+"1","function (x, y, ...) 
+UseMethod(\"plot\")
+<bytecode: 0x7ffc53518460>
+<environment: namespace:graphics>
+"

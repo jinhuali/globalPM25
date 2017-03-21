@@ -1,0 +1,6 @@
+"0","topTenTzAndOs %>%
+    ggplot(aes(x = tz, y = count, fill = os)) +
+    geom_bar(position = \"fill\", stat = \"identity\") +
+    scale_y_continuous(labels = percent_format()) +
+    scale_fill_manual(values = c(\"red\", \"blue\")) +
+    coord_flip()"

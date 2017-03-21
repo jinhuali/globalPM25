@@ -1,0 +1,283 @@
+"0","q0 <- qplot(yield, data = barley, geom = \"density\", col = site)
+class(q0)"
+"1","[1] \"gg\"     \"ggplot\"
+"
+"1","gg
+
+ggplot
+"
+"0","typeof(q0)"
+"1","[1] \"list\"
+"
+"1","list
+"
+"0","str(q0)"
+"1","List of 9
+ $ data       :'data.frame':	120 obs. of  4 variables:
+  ..$ yield  : num [1:120] 27 48.9 27.4 39.9 33 ...
+  ..$ variety: Factor w/ 10 levels \"Svansota\",\"No. 462\",..: 3 3 3 3 3 3 7 7 7 7 ...
+  ..$ year   : Factor w/ 2 levels \"1932\",\"1931\": 2 2 2 2 2 2 2 2 2 2 ...
+  ..$ site   : Factor w/ 6 levels \"Grand Rapids\",..: 3 6 4 5 1 2 3 6 4 5 ...
+ $ layers     :List of 1
+  ..$ :Classes 'LayerInstance', 'Layer', 'ggproto' <ggproto object: Class LayerInstance, Layer>
+    aes_params: list
+    compute_aesthetics: function
+    compute_geom_1: function
+    compute_geom_2: function
+    compute_position: function
+    compute_statistic: function
+    data: waiver
+    draw_geom: function
+    finish_statistics: function
+    geom: <ggproto object: Class GeomDensity, GeomArea, GeomRibbon, Geom>
+        aesthetics: function
+        default_aes: list
+        draw_group: function
+        draw_key: function
+        draw_layer: function
+        draw_panel: function
+        extra_params: na.rm
+        handle_na: function
+        non_missing_aes: 
+        optional_aes: 
+        parameters: function
+        required_aes: x y
+        setup_data: function
+        use_defaults: function
+        super:  <ggproto object: Class GeomArea, GeomRibbon, Geom>
+    geom_params: list
+    inherit.aes: TRUE
+    layer_data: function
+    map_statistic: function
+    mapping: NULL
+    position: <ggproto object: Class PositionIdentity, Position>
+        compute_layer: function
+        compute_panel: function
+        required_aes: 
+        setup_data: function
+        setup_params: function
+        super:  <ggproto object: Class Position>
+    print: function
+    show.legend: NA
+    stat: <ggproto object: Class StatDensity, Stat>
+        aesthetics: function
+        compute_group: function
+        compute_layer: function
+        compute_panel: function
+        default_aes: uneval
+        extra_params: na.rm
+        finish_layer: function
+        non_missing_aes: 
+        parameters: function
+        required_aes: x
+        retransform: TRUE
+        setup_data: function
+        setup_params: function
+        super:  <ggproto object: Class Stat>
+    stat_params: list
+    subset: NULL
+    super:  <ggproto object: Class Layer> 
+ $ scales     :Classes 'ScalesList', 'ggproto' <ggproto object: Class ScalesList>
+    add: function
+    clone: function
+    find: function
+    get_scales: function
+    has_scale: function
+    input: function
+    n: function
+    non_position_scales: function
+    scales: list
+    super:  <ggproto object: Class ScalesList> 
+ $ mapping    :List of 2
+  ..$ colour: symbol site
+  ..$ x     : symbol yield
+ $ theme      : list()
+ $ coordinates:Classes 'CoordCartesian', 'Coord', 'ggproto' <ggproto object: Class CoordCartesian, Coord>
+    aspect: function
+    distance: function
+    expand: TRUE
+    is_linear: function
+    labels: function
+    limits: list
+    range: function
+    render_axis_h: function
+    render_axis_v: function
+    render_bg: function
+    render_fg: function
+    train: function
+    transform: function
+    super:  <ggproto object: Class CoordCartesian, Coord> 
+ $ facet      :Classes 'FacetNull', 'Facet', 'ggproto' <ggproto object: Class FacetNull, Facet>
+    compute_layout: function
+    draw_back: function
+    draw_front: function
+    draw_labels: function
+    draw_panels: function
+    finish_data: function
+    init_scales: function
+    map: function
+    map_data: function
+    params: list
+    render_back: function
+    render_front: function
+    render_panels: function
+    setup_data: function
+    setup_params: function
+    shrink: TRUE
+    train: function
+    train_positions: function
+    train_scales: function
+    vars: function
+    super:  <ggproto object: Class FacetNull, Facet> 
+ $ plot_env   :<environment: R_GlobalEnv> 
+ $ labels     :List of 4
+  ..$ colour: chr \"site\"
+  ..$ x     : chr \"yield\"
+  ..$ y     : chr \"density\"
+  ..$ fill  : chr \"NA\"
+ - attr(*, \"class\")= chr [1:2] \"gg\" \"ggplot\"
+"
+"0","names(q0)"
+"1","[1] \"data\"        \"layers\"      \"scales\"      \"mapping\"     \"theme\"      
+[6] \"coordinates\" \"facet\"       \"plot_env\"    \"labels\"     
+"
+"1","data
+
+layers
+
+scales
+
+mapping
+
+theme
+
+coordinates
+
+facet
+
+plot_env
+
+labels
+"
+"0","q <- qplot(yield, data = barley, stat = \"density\", geom = \"line\") + facet_wrap(~ site)"
+"0","str(q)"
+"1","List of 9
+ $ data       :'data.frame':	120 obs. of  4 variables:
+  ..$ yield  : num [1:120] 27 48.9 27.4 39.9 33 ...
+  ..$ variety: Factor w/ 10 levels \"Svansota\",\"No. 462\",..: 3 3 3 3 3 3 7 7 7 7 ...
+  ..$ year   : Factor w/ 2 levels \"1932\",\"1931\": 2 2 2 2 2 2 2 2 2 2 ...
+  ..$ site   : Factor w/ 6 levels \"Grand Rapids\",..: 3 6 4 5 1 2 3 6 4 5 ...
+ $ layers     :List of 1
+  ..$ :Classes 'LayerInstance', 'Layer', 'ggproto' <ggproto object: Class LayerInstance, Layer>
+    aes_params: list
+    compute_aesthetics: function
+    compute_geom_1: function
+    compute_geom_2: function
+    compute_position: function
+    compute_statistic: function
+    data: waiver
+    draw_geom: function
+    finish_statistics: function
+    geom: <ggproto object: Class GeomLine, GeomPath, Geom>
+        aesthetics: function
+        default_aes: uneval
+        draw_group: function
+        draw_key: function
+        draw_layer: function
+        draw_panel: function
+        extra_params: na.rm
+        handle_na: function
+        non_missing_aes: 
+        optional_aes: 
+        parameters: function
+        required_aes: x y
+        setup_data: function
+        use_defaults: function
+        super:  <ggproto object: Class GeomPath, Geom>
+    geom_params: list
+    inherit.aes: TRUE
+    layer_data: function
+    map_statistic: function
+    mapping: NULL
+    position: <ggproto object: Class PositionIdentity, Position>
+        compute_layer: function
+        compute_panel: function
+        required_aes: 
+        setup_data: function
+        setup_params: function
+        super:  <ggproto object: Class Position>
+    print: function
+    show.legend: NA
+    stat: <ggproto object: Class StatIdentity, Stat>
+        aesthetics: function
+        compute_group: function
+        compute_layer: function
+        compute_panel: function
+        default_aes: uneval
+        extra_params: na.rm
+        finish_layer: function
+        non_missing_aes: 
+        parameters: function
+        required_aes: 
+        retransform: TRUE
+        setup_data: function
+        setup_params: function
+        super:  <ggproto object: Class Stat>
+    stat_params: list
+    subset: NULL
+    super:  <ggproto object: Class Layer> 
+ $ scales     :Classes 'ScalesList', 'ggproto' <ggproto object: Class ScalesList>
+    add: function
+    clone: function
+    find: function
+    get_scales: function
+    has_scale: function
+    input: function
+    n: function
+    non_position_scales: function
+    scales: list
+    super:  <ggproto object: Class ScalesList> 
+ $ mapping    :List of 1
+  ..$ x: symbol yield
+ $ theme      : list()
+ $ coordinates:Classes 'CoordCartesian', 'Coord', 'ggproto' <ggproto object: Class CoordCartesian, Coord>
+    aspect: function
+    distance: function
+    expand: TRUE
+    is_linear: function
+    labels: function
+    limits: list
+    range: function
+    render_axis_h: function
+    render_axis_v: function
+    render_bg: function
+    render_fg: function
+    train: function
+    transform: function
+    super:  <ggproto object: Class CoordCartesian, Coord> 
+ $ facet      :Classes 'FacetWrap', 'Facet', 'ggproto' <ggproto object: Class FacetWrap, Facet>
+    compute_layout: function
+    draw_back: function
+    draw_front: function
+    draw_labels: function
+    draw_panels: function
+    finish_data: function
+    init_scales: function
+    map: function
+    map_data: function
+    params: list
+    render_back: function
+    render_front: function
+    render_panels: function
+    setup_data: function
+    setup_params: function
+    shrink: TRUE
+    train: function
+    train_positions: function
+    train_scales: function
+    super:  <ggproto object: Class FacetWrap, Facet> 
+ $ plot_env   :<environment: R_GlobalEnv> 
+ $ labels     :List of 1
+  ..$ x: chr \"yield\"
+ - attr(*, \"class\")= chr [1:2] \"gg\" \"ggplot\"
+"

@@ -10,9 +10,9 @@
 
 getPMatMajorWorldCities <- function(){
   dat <- getPMbyCityNames(getglobalPM25Options()$worldcities)
-  mapWorld <- borders("world", colour="gray50", fill="gray50") # create a layer of borders
-  g <- ggplot(aes(x = lon, y = lat, colour = APL, size = pm25), data = na.omit(dat)) +   mapWorld
-  g <- g + geom_point()
+  mapWorld <- ggplot2::borders("world", colour="gray50", fill="gray50") # create a layer of borders
+  g <- ggplot2::ggplot(aes(x = lon, y = lat, colour = APL, size = pm25), data = na.omit(dat)) +   mapWorld
+  g <- g + ggplot2::geom_point()
   #browser()
   print(g)
   dat

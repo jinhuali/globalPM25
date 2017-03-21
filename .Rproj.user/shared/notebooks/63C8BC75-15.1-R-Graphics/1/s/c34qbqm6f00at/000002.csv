@@ -1,0 +1,12 @@
+"0","pdf(file = \"plot.pdf\", width = 5, height = 3)
+plot.new()
+plot.window(range(pressure$temperature), range(pressure$pressure))
+plot.xy(pressure, type = \"p\")
+lines(pressure)
+box()
+axis(1); axis(2); axis(3)
+title(xlab = names(pressure)[1], ylab = names(pressure)[2])
+dev.off()"
+"1","quartz_off_screen 
+                2 
+"
