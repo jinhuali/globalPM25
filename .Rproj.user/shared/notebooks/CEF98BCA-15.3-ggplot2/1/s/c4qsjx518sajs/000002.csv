@@ -1,3 +1,0 @@
-"0","ggplot()
-ggplot(data = dataFrame)
-ggplot(data = dataFrame, mapping = aes(x, y, <other aesthetics>))"

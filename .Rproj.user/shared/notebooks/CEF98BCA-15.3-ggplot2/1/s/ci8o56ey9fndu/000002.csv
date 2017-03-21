@@ -1,5 +1,0 @@
-"0","library(gridExtra)
-p1 <- qplot(yield, data = barley, geom=\"density\", col = site)
-## Explicit invocation
-p2 <- qplot(yield, data = barley, geom=\"histogram\", fill = site)
-grid.arrange(p1, p2, ncol=2)"

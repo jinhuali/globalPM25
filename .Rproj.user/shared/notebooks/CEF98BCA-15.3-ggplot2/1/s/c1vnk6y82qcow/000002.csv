@@ -1,1 +1,0 @@
-"0","qplot(yield, data = barley, geom = \"density\") + facet_wrap(~ site)"

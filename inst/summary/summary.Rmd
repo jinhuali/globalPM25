@@ -90,7 +90,7 @@ Examples 1 and 2 use local data set. Examples 3 would require active internet co
 ```{r, fig.width=8, fig.height=4}
 require(globalPM25)
 data("worlddat")
-mapWorld <- borders("world", colour="gray50", fill="gray50") # create a layer of borders
+mapWorld <- ggplot2::borders("world", colour="gray50", fill="gray50") # create a layer of borders
 g <- ggplot(aes(x = lon, y = lat, colour = APL, size = pm25), data = na.omit(worlddat)) +   mapWorld
 g <- g + geom_point()
 g <- g + ggtitle("PM2.5 data collected from stations at a list of selected cities worldwide; \n the data are sampled at 4pm PST, March 19, 2017")
@@ -109,7 +109,7 @@ g
 2. plot the data from `usdat.rda`
 ```{r, fig.width=8, fig.height=4}
 data(usdat)
-mapUS <- borders("usa", colour="gray50", fill="gray50") # create a layer of borders
+mapUS <- ggplot2::borders("usa", colour="gray50", fill="gray50") # create a layer of borders
 g <- ggplot(aes(x = lon, y = lat, colour = APL, size = pm25), data = usdat) +   mapUS
 g <- g + geom_point()
 g <- g + ggtitle("PM2.5 data collected from stations at continental USA; \n the data are sampled at 4pm PST, March 19, 2017

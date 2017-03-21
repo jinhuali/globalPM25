@@ -1,8 +1,0 @@
-"0","library(graphics)
-data(pressure)
-class(pressure)"
-"1","[1] \"data.frame\"
-"
-"1","data.frame
-"
-"0","plot(pressure)"

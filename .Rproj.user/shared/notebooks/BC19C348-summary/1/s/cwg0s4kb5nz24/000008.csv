@@ -1,7 +1,0 @@
-"0","data(usdat)"
-"0","mapUS <- borders(""usa"", colour=""gray50"", fill=""gray50"") # create a layer of borders"
-"0","g <- ggplot(aes(x = lon, y = lat, colour = APL, size = pm25), data = usdat) +   mapUS"
-"0","g <- g + geom_point()"
-"0","g <- g + ggtitle(""PM2.5 data collected from stations at continental USA; \n the data are sampled at 4pm PST, March 19, 2017"
-"0",""")"
-"0","g"

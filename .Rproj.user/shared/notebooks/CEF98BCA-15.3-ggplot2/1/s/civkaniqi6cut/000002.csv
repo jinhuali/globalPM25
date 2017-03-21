@@ -1,2 +1,0 @@
-"0","library(lattice)
-qplot(yield, data = barley, geom = \"density\", col = site, main = \"Implicit stat\")"

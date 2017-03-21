@@ -1,5 +1,0 @@
-"0","load(\"sipat-ex.RData\")
-p <- ggplot()
-p <- p + geom_density(aes(x = score, color = txType),
-                      data = sipat)
-p"

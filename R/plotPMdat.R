@@ -4,6 +4,7 @@
 #' @param pauseplot boolean option to pause between plots
 #' @importFrom ggplot2 ggtitle ggplot borders geom_point aes
 #' @importFrom graphics par
+#' @importFrom stats na.omit
 #' @export
 #' @examples
 #' plotPMdat()
@@ -11,7 +12,7 @@ plotPMdat <- function(pauseplot = TRUE){
   par(ask=pauseplot)
 
   #data(worlddat)
-  mapWorld <- borders("world", colour="gray50", fill="gray50") # create a layer of borders
+  mapWorld <- ggplot2::borders("world", colour="gray50", fill="gray50") # create a layer of borders
   g <- ggplot(aes(x = lon, y = lat, colour = APL, size = pm25), data = na.omit(worlddat)) +   mapWorld
   g <- g + geom_point()
   g <- g + ggtitle("PM2.5 data collected from stations at a list of selected cities worldwide; \n the data are sampled at 4pm PST, March 19, 2017")
@@ -25,7 +26,7 @@ plotPMdat <- function(pauseplot = TRUE){
   print(g)
 
   #data(usdat)
-  mapUS <- borders("usa", colour="gray50", fill="gray50") # create a layer of borders
+  mapUS <- ggplot2::borders("usa", colour="gray50", fill="gray50") # create a layer of borders
   g <- ggplot(aes(x = lon, y = lat, colour = APL, size = pm25), data = usdat) +   mapUS
   g <- g + geom_point()
   g <- g + ggtitle("PM2.5 data collected from stations at continental USA; \n the data are sampled at 4pm PST, March 19, 2017

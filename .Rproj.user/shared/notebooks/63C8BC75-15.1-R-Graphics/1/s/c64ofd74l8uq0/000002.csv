@@ -1,3 +1,0 @@
-"0","opar <- par(mfrow=c(1,2)) ## 1 row, 2 cols
-plot(1:10)
-plot(11:20)"
