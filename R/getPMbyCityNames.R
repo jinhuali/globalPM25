@@ -29,10 +29,12 @@ getPMbyCityNames <- function(citynames = "san jose"){
     dplyr::arrange(desc(pm25))
   dat <- tibble::as_tibble(rslt)
 
-  g <- ggplot(aes(x = reorder(city, pm25), y = pm25), data = na.omit(dat)) +
-    geom_bar(stat = "identity", color = "#E69F00", fill = "#E69F00") +
-    coord_flip()
-  print(g)
+  if(length(citynames) > 1){
+    g <- ggplot(aes(x = reorder(city, pm25), y = pm25), data = na.omit(dat)) +
+      geom_bar(stat = "identity", color = "#E69F00", fill = "#E69F00") +
+      coord_flip()
+    print(g)
+  }
 
   dat
 }

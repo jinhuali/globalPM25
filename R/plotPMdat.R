@@ -1,13 +1,14 @@
 #' plot sample pm2.5 data form \code{usdat} and \code{\link{worlddat}}
 #'
 #' @description plot sample pm2.5 data from stations in US and a list of selected big cities in the world
+#' @param pauseplot boolean option to pause between plots
 #' @importFrom ggplot2 ggtitle ggplot borders geom_point aes
 #' @importFrom graphics par
 #' @export
 #' @examples
 #' plotPMdat()
-plotPMdat <- function(){
-  par(ask=TRUE)
+plotPMdat <- function(pauseplot = TRUE){
+  par(ask=pauseplot)
 
   #data(worlddat)
   mapWorld <- borders("world", colour="gray50", fill="gray50") # create a layer of borders

@@ -9,13 +9,21 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
-This package is developed to access real-time air pollute PM2.5 level near you, or at any city around the world. It is also developed with the intention to increase awareness about the dangerous of air pollution to the human health, particularly in some developing country. 
-
-
-```{r}
-require(globalPM25)
+```{r, echo = FALSE}
+###opts_knit$set(stop_on_error = 2L)
+installIfNeeded <- function(packages, ...) {
+    installedPackages <- installed.packages()[, 1]
+    toInstall <- setdiff(packages, installedPackages)
+    if (length(toInstall) > 0) install.packages(toInstall, ...)
+}
+installIfNeeded(c("globalPM25",
+                  "ggplot2"))
+library(ggplot2)
+library(globalPM25)
 ```
+
+This package is developed for users to access and plot real-time air pollute PM2.5 level near you, at a city, at any location, or in a region around the world. The purpose is to increase overall awareness about the dangerous of air pollution to human health, particularly in some developing countries. 
+
 
 ## What is PM2.5 and why it is dangerous to you and your family's health
 
@@ -24,9 +32,9 @@ PM2.5 refers to atmospheric particulate matter (PM) that have a diameter less th
 
 ## How is PM2.5 measured?
 
-According to US EPA, PM2.5 is quanlitatively measured by AQI  (air quality index) and qualitatively measured by APL (air pollution level). 
+According to US EPA, PM2.5 can be both quantitatively measured by AQI  (air quality index) and qualitatively measured by APL (air pollution level). 
 
-![EPA PM2.5 standard](EPApm25AQIOverview.png)
+![EPA PM2.5 standard (APL=Air Quality Index Levels of Health Concern, AQI=Numeric Value)](EPApm25AQIOverview.png)
 
 Please refer to US EPA official website [airnow.gov](https://airnow.gov/index.cfm?action=aqibasics.aqi) for more information. In this package, both AQI and APL are provided. 
 
@@ -45,50 +53,92 @@ To request your personal token, please visit this [link](http://aqicn.org/data-p
 
 ## Functions and data overview 
 
-There are 9 functions/.R files in the package. Below are the function name and a short description. 
+There are 10 functions/.R files in the package. Below are the names and a short description for each of them.
 
-1. settoken(token): set your personal token requested from WAQ website
+1. `settoken(token)`: set your personal token requested from WAQ website
 
-1. processPMdata(data): process raw AQI data feed. extract information such as AQI, APL local time, address, and geographical location into a dataframe  
+1. `processPMdata(data)`: process raw data feed. extract information such as PM2.5 AQI, APL, local time, address, and geographical location into a dataframe  
 
-1. getPMbyCityNames(citynames): query PM2.5 level by a city name or a vector of city names. this function will request real-time feed and proces the feed by calling processPMdata. Output is organized in a dataframe. 
+1. `getPMbyCityNames(citynames)`: query PM2.5 level by a city name or a vector of city names. this function will request real-time feed and proces the feed by calling `processPMdata`. Output is organized in a dataframe. 
 
-1. getPMbylatlon(latitude, longitude): similar to getPMbyCityNames but query by a latitidue and a longitude instead of a city name
+1. `getPMbylatlon(latitude, longitude)`: similar to `getPMbyCityNames` but query by latitidue and longitude instead of a city name
 
-1. getPMnearme(): similar to getPMbyCityNames but query by a station closest to you based on computer IP address.  
+1. `getPMnearme()`: similar to `getPMbyCityNames` but query by a station closest to you based on computer IP address.  
 
-1. getPMinRegion(): similar to getPMbyCityNames but query by a list of stations in a region. The region can be defined in two ways: a) a city name and a distance range. b) a rectangular boundary defined by latitude and longitude at opposite corners. 
+1. `getPMinRegion()`: similar to `getPMbyCityNames` but query by a list of stations in a region. The region can be defined in two ways: a) `getPMinRegion(cityname, distance)` a city name and a distance range. b) `getPMinRegion(geobound = c(lat1, lon1, lat2, lon2))`a rectangular boundary defined by a pair of latitudes and longitudes at opposite corners. 
 
-1. plotPMdat(): demo to plot some results
+1. `getPMatMajorWorldCities()`: similar to `getPMbyCityNames` but the cities are pre-selected major cities around the world. the city names can be listed using `getglobalPM25Options()` and set using `setworldcities(citynames)` in `global.R`. 
 
-1. zzz.R(): use to suppress no global variable binding note. 
+1. `plotPMdat()`: demo to plot some results
 
-1. global.R: set access to some variables such as token, WAQ url, etc.
+1. `zzz.R`: use to suppress no global variable binding note. 
+
+1. `global.R`: set access to some variables such as token string, WAQ url string, etc.
 
 There are 2 data sets, which are:
 
-1. "usdat.rda": this contains PM2.5 data collected from stations at continental USA. the data are sampled at 4pm PST, March 19, 2017
+1. `usdat.rda`: this contains PM2.5 data collected from all stations at continental USA using `getPMinRegion()`. the data are collected at 4pm PST, March 19, 2017
 
-1. "worlddat.rda": this contains PM2.5 data collected from a list of large cities worldwide. the city list can be found and set in global.R. the data are sampled at 4pm PST, March 19, 2017
+1. `worlddat.rda`: this contains PM2.5 data collected from a list of large cities worldwide using `getPMatMajorWorldCities()`. the data are collected at 4pm PST, March 19, 2017
+
+## Example
+
+Examples 1 and 2 use local dataset. Examples 3 would require active internet connection to access real-time data feed. 
 
 
-You can enable figure captions by `fig_caption: yes` in YAML:
-
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+1. plot the data from `worlddat.rda`
+```{r, fig.width=8, fig.height=4}
+require(globalPM25)
+data("worlddat")
+mapWorld <- borders("world", colour="gray50", fill="gray50") # create a layer of borders
+g <- ggplot(aes(x = lon, y = lat, colour = APL, size = pm25), data = na.omit(worlddat)) +   mapWorld
+g <- g + geom_point()
+g <- g + ggtitle("PM2.5 data collected from stations at a list of selected cities worldwide; \n the data are sampled at 4pm PST, March 19, 2017")
+g
 ```
 
-Also a quote using `>`:
+```{r, fig.width=8, fig.height=4}
+g <- ggplot(aes(x = reorder(city, pm25), y = pm25, fill=factor(APL)), data = na.omit(worlddat)) +
+    geom_bar(stat = "identity") +
+    coord_flip()
+g <- g + ggtitle("PM2.5 data collected from stations at a list of selected cities worldwide; \n the data are sampled at 4pm PST, March 19, 2017")
+g
+```
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+
+2. plot the data from `usdat.rda`
+```{r, fig.width=8, fig.height=4}
+data(usdat)
+mapUS <- borders("usa", colour="gray50", fill="gray50") # create a layer of borders
+g <- ggplot(aes(x = lon, y = lat, colour = APL, size = pm25), data = usdat) +   mapUS
+g <- g + geom_point()
+g <- g + ggtitle("PM2.5 data collected from stations at continental USA; \n the data are sampled at 4pm PST, March 19, 2017
+")
+g
+```
+
+
+The followings require active internet connection to access server for real-time feed. 
+
+3. 
+```{r, fig.width=8, fig.height=4}
+getPMnearme() #get real-time PM2.5 level from a station cloest to you (base on your computer ip address)
+```
+```{r, fig.width=8, fig.height=4}
+getPMbyCityNames(c("newyork", "chicago", "san jose", "dallas", "los angeles"))
+```
+
+```{r, fig.width=8, fig.height=4}
+getPMinRegion("san jose", 100)
+```
+
+```{r, fig.width=8, fig.height=4}
+getPMatMajorWorldCities()
+```
+
+
+## Conclusion and Future work
+First of all, I would like to thank WAQ for making the data avaiable. This package allows users to access real-time air pollute PM2.5 level in various ways: near the user, at any city, at any location, and/or in a region. Basic sorting and plot are implemented. The package was built using R studio with devtools and shared at [github](https://github.com/jinhuali/globalPM25). 
+
+I plan to continue to maintain the package. Some future work can be: a) change to S6 or reference class, b) add more real-time air pollute parameters such O3, NO2, SO2, PM10 levels. that are available from WAQ server, c) add functions to save the data so that users can retrieve historical data. 
+

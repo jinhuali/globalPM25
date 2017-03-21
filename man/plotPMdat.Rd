@@ -4,7 +4,10 @@
 \alias{plotPMdat}
 \title{plot sample pm2.5 data form \code{usdat} and \code{\link{worlddat}}}
 \usage{
-plotPMdat()
+plotPMdat(pauseplot = TRUE)
+}
+\arguments{
+\item{pauseplot}{boolean option to pause between plots}
 }
 \description{
 plot sample pm2.5 data from stations in US and a list of selected big cities in the world
