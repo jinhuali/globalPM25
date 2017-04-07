@@ -13,7 +13,7 @@ PM2.5 refers to atmospheric particulate matter (PM) that have a diameter less th
 
 According to US EPA, PM2.5 can be both quantitatively measured by AQI  (air quality index) and qualitatively measured by APL (air pollution level). 
 
-![EPA PM2.5 standard (APL=Air Quality Index Levels of Health Concern, AQI=Numeric Value)](\vignettes\EPApm25AQIOverview.png)
+![EPA PM2.5 standard (APL=Air Quality Index Levels of Health Concern, AQI=Numeric Value)](vignettes/EPApm25AQIOverview.png)
 
 Please refer to US EPA official website [airnow.gov](https://airnow.gov/index.cfm?action=aqibasics.aqi) for more information. In this package, both AQI and APL are provided. 
 
@@ -56,9 +56,9 @@ There are 2 data sets, which are:
 1. `worlddat.rda`: this contains PM2.5 data collected from a list of large cities worldwide using `getPMatMajorWorldCities()`. the data are collected at 4pm PST, March 19, 2017
 
 ## Example
-![PM2.5 data collected from stations at a list of selected cities worldwide; \n the data are sampled at 4pm PST, March 19, 2017)](\vignettes\sampleworld.png)
-![PM2.5 data collected from stations at a list of selected cities worldwide; \n the data are sampled at 4pm PST, March 19, 2017)](\vignettes\EPApm25AQIOverview.png)
-![EPA PM2.5 standard (APL=Air Quality Index Levels of Health Concern, AQI=Numeric Value)](\vignettes\EPApm25AQIOverview.png)
+![PM2.5 data collected from stations at a list of selected cities worldwide; the data are sampled at 4pm PST, March 19, 2017)](vignettes/sampleworld.png)
+![PM2.5 data collected from stations at a list of selected cities worldwide; the data are sampled at 4pm PST, March 19, 2017)](vignettes/samplecitiesrank.png)
+![EPA PM2.5 standard (APL=Air Quality Index Levels of Health Concern, AQI=Numeric Value)](vignettes/sampleUS.png)
 
 ## Conclusion and Future work
 First of all, I would like to thank WAQ for making the data available. This package allows users to access real-time air pollute PM2.5 level in various ways: near the user, at any city, at any location, and/or in a region. Basic sorting and plot are implemented. The package was built using R studio with devtools and shared at [github](https://github.com/jinhuali/globalPM25). 
