@@ -38,15 +38,15 @@ g <- g + ggtitle("PM2.5 data collected from stations at continental USA; \n the 
 ")
 g
 
-## ---- fig.width=8, fig.height=4------------------------------------------
-getPMnearme() #get real-time PM2.5 level from a station cloest to you (base on your computer ip address)
+## ----eval = FALSE, fig.width=8, fig.height=4-----------------------------
+#  getPMnearme() #get real-time PM2.5 level from a station cloest to you (base on your computer ip address)
 
-## ---- fig.width=8, fig.height=4------------------------------------------
-getPMbyCityNames(c("newyork", "chicago", "san jose", "dallas", "los angeles"))
+## ----eval = FALSE, fig.width=8, fig.height=4-----------------------------
+#  getPMbyCityNames(c("newyork", "chicago", "san jose", "dallas", "los angeles"))
 
-## ---- fig.width=8, fig.height=4------------------------------------------
-getPMinRegion("san jose", 100)
+## ----eval = FALSE, fig.width=8, fig.height=4-----------------------------
+#  getPMinRegion("san jose", 100)
 
-## ---- fig.width=8, fig.height=4------------------------------------------
-getPMatMajorWorldCities()
+## ----eval = FALSE, fig.width=8, fig.height=4-----------------------------
+#  getPMatMajorWorldCities()
 

@@ -41,9 +41,9 @@ Please refer to US EPA official website [airnow.gov](https://airnow.gov/index.cf
 
 ## Data source 
 
-The real-time PM2.5 data feed are from [WAQ (World Air Quality) Project](www.aqicn.org) via JSON API. According to WAQ, "Real-time Air Quality information is available for than 9000 stations in 800 major cities from 70 countries, thanks to the huge effort from the world EPAs (Environmental Protection Agencies)." 
+The real-time PM2.5 data feed are from [WAQ (World Air Quality) Project](http://www.aqicn.org) via JSON API. According to WAQ, "Real-time Air Quality information is available for than 9000 stations in 800 major cities from 70 countries, thanks to the huge effort from the world EPAs (Environmental Protection Agencies)." 
 
-To use globalPM25 package to access real-time PM2.5 data feed, users are suggested to request a personal token from WAQ website. Then the personal token can be set in the package using
+To use globalPM25 package to access real-time PM2.5 data feed, users first need to request a personal token from WAQ website. Then the personal token can be set in the package using
 ```{r, eval=FALSE}
 settoken()
 ```
@@ -65,7 +65,7 @@ There are 10 functions/.R files in the package. Below are the names and a short 
 
 1. `getPMnearme()`: similar to `getPMbyCityNames` but query by a station closest to you based on computer IP address.  
 
-1. `getPMinRegion()`: similar to `getPMbyCityNames` but query by a list of stations in a region. The region can be defined in two ways: a) `getPMinRegion(cityname, distance)` a city name and a distance range. b) `getPMinRegion(geobound = c(lat1, lon1, lat2, lon2))`a rectangular boundary defined by a pair of latitudes and longitudes at opposite corners. 
+1. `getPMinRegion()`: similar to `getPMbyCityNames` but query by a list of stations in a region. The region can be defined in two ways: a) `getPMinRegion(cityname, distance)` a city name and a distance range. b) `getPMinRegion(geobound = c(lat1, lon1, lat2, lon2))` a rectangular boundary defined by a pair of latitudes and longitudes at opposite corners. 
 
 1. `getPMatMajorWorldCities()`: similar to `getPMbyCityNames` but the cities are pre-selected major cities around the world. the city names can be listed using `getglobalPM25Options()` and set using `setworldcities(citynames)` in `global.R`. 
 
@@ -83,7 +83,7 @@ There are 2 data sets, which are:
 
 ## Example
 
-Examples 1 and 2 use local data set. Examples 3 would require active internet connection to access real-time data feed. 
+Examples 1 and 2 use local data set. Example 3 would require a personal token and active internet connection to access real-time data feed. Please refer to **Data source** Section to request a personal token and set your token. 
 
 
 1. plot the data from `worlddat.rda`
@@ -118,24 +118,22 @@ g
 ```
 
 
-The followings require active internet connection to access server for real-time feed. 
-
+The followings require a valid token and active internet connection to access server for real-time feed. 
 3. 
-```{r, fig.width=8, fig.height=4}
+```{r eval = FALSE, fig.width=8, fig.height=4}
 getPMnearme() #get real-time PM2.5 level from a station cloest to you (base on your computer ip address)
 ```
-```{r, fig.width=8, fig.height=4}
+```{r eval = FALSE, fig.width=8, fig.height=4}
 getPMbyCityNames(c("newyork", "chicago", "san jose", "dallas", "los angeles"))
 ```
 
-```{r, fig.width=8, fig.height=4}
+```{r eval = FALSE, fig.width=8, fig.height=4}
 getPMinRegion("san jose", 100)
 ```
 
-```{r, fig.width=8, fig.height=4}
+```{r eval = FALSE, fig.width=8, fig.height=4}
 getPMatMajorWorldCities()
 ```
-
 
 ## Conclusion and Future work
 First of all, I would like to thank WAQ for making the data available. This package allows users to access real-time air pollute PM2.5 level in various ways: near the user, at any city, at any location, and/or in a region. Basic sorting and plot are implemented. The package was built using R studio with devtools and shared at [github](https://github.com/jinhuali/globalPM25). 

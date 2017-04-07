@@ -18,5 +18,5 @@ tibble
 query real-time PM2.5 level at the station closest to a latitude and longitude. return a tibble containing Pm2.5 level, station location, local and UTC time
 }
 \examples{
-getPMbylatlon(37.774929, -122.419416)
+\dontrun{getPMbylatlon(37.774929, -122.419416)} ##require personal token
 }

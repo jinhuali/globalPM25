@@ -13,6 +13,6 @@ processPMdata(mydata)
 a tibble
 }
 \description{
-process json data from \url{aqicn.org} API
+process json data from \url{http://www.aqicn.org}
 }
 \keyword{internal}

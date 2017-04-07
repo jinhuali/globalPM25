@@ -10,8 +10,8 @@
 #' @importFrom ggplot2 geom_bar ggplot aes coord_flip
 #' @export
 #' @examples
-#' getPMbyCityNames("san jose")
-#' getPMbyCityNames(c("tokyo", "madrid"))
+#' \dontrun{getPMbyCityNames("san jose")} #require personal token
+#' \dontrun{getPMbyCityNames(c("tokyo", "madrid"))}  
 getPMbyCityNames <- function(citynames = "san jose"){
   baseURL = getglobalPM25Options()$baseURL
   atoken = getglobalPM25Options()$token

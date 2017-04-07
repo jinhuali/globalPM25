@@ -6,7 +6,7 @@
 #' @importFrom stats na.omit
 #' @export
 #' @examples
-#' getPMatMajorWorldCities()
+#' \dontrun{getPMatMajorWorldCities()} #require personal token
 
 getPMatMajorWorldCities <- function(){
   dat <- getPMbyCityNames(getglobalPM25Options()$worldcities)

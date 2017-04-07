@@ -9,7 +9,7 @@
 #' @importFrom dplyr select
 #' @export
 #' @examples
-#' getPMbylatlon(37.774929, -122.419416)
+#' \dontrun{getPMbylatlon(37.774929, -122.419416)} ##require personal token
 getPMbylatlon <- function(lat, lon){
   if(missing(lat) || missing(lon)){
     stop("missing argument")

@@ -1,6 +1,6 @@
 #' process json data
 #'
-#' @description process json data from \url{aqicn.org} API
+#' @description process json data from \url{http://www.aqicn.org} 
 #' @param mydata a list
 #' @return a tibble
 #' @importFrom tibble tibble

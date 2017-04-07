@@ -11,9 +11,9 @@
 #' @importFrom ggplot2 qplot
 #' @export
 #' @examples
-#' getPMinRegion("beijing")
-#' getPMinRegion("beijing", 200)
-#' getPMinRegion(geobound = c(38.164368, -122.85501, 37.203647, -121.431634)) #san francisco bay area
+#' \dontrun{getPMinRegion("beijing")} #require personal token
+#' \dontrun{getPMinRegion("beijing", 200)}
+#' \dontrun{getPMinRegion(geobound = c(38.164368, -122.85501, 37.203647, -121.431634))} #san francisco bay area
 getPMinRegion <- function(cityname, distance = 50, geobound = NULL){
   if(!missing(cityname) && distance <= 0){
     stop("range must be greater than zero")

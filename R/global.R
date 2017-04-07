@@ -2,7 +2,7 @@
 ## Global variable for package
 ##
 
-globalPM25.options <- list(token = "c37e84c905b04779aadbd46685abebbc9089b243",
+globalPM25.options <- list(token = "demo",
                            baseURL = "http://api.waqi.info",
                            apl_description = c("Good", "Moderate", "Unhealthy for sensitive groups", "Unhealthy", "Very Unhealthy", "Hazardous"),
                            worldcities = c('mumbai', 'tokyo', 'seoul', 'delhi', 'jakarta', 'paris', 'moscow', 'mexico city', 'san jose',
@@ -23,7 +23,7 @@ globalPM25.options <- list(token = "c37e84c905b04779aadbd46685abebbc9089b243",
 #' }
 #'
 resetOptions <- function() {
-    assignInMyNamespace("globalPM25.options", list(token = "c37e84c905b04779aadbd46685abebbc9089b243",
+    assignInMyNamespace("globalPM25.options", list(token = "demo",
                                                    baseURL = "http://api.waqi.info",
                                                    apl_description = c("Good", "Moderate", "Unhealthy for sensitive groups", "Unhealthy", "Very Unhealthy", "Hazardous"),
                                                    worldcities = c('mumbai', 'tokyo', 'seoul', 'delhi', 'jakarta', 'paris', 'moscow', 'mexico city', 'san jose',

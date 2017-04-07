@@ -13,5 +13,5 @@ a tibble
 Query real-time PM2.5 levels measured by US EPA's AQI (Air Quality Index) and APL (Air Pollution Level) at a list of major world cities. Return a tibble containing PM2.5 level, obervation station location, and local time. The results are sorted by PM2.5 AQI value and plot on world map
 }
 \examples{
-getPMatMajorWorldCities()
+\dontrun{getPMatMajorWorldCities()} #require personal token
 }
