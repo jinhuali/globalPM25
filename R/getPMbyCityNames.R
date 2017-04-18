@@ -6,8 +6,8 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom tibble tibble
 #' @importFrom dplyr select arrange
-#' @importFrom stats na.omit reorder
-#' @importFrom ggplot2 geom_bar ggplot aes coord_flip
+#' @importFrom stats reorder
+#' @importFrom ggplot2 geom_bar ggplot aes coord_flip scale_color_manual
 #' @export
 #' @examples
 #' \dontrun{getPMbyCityNames("san jose")} #require personal token
@@ -20,6 +20,9 @@ getPMbyCityNames <- function(citynames = "san jose"){
   for(cityname in citynames){
     mydata <- jsonlite::fromJSON(sprintf("%s/feed/%s/?token=%s", baseURL, cityname, atoken), flatten=TRUE)
     arslt <- processPMdata(mydata)
+    if(is.na(arslt[1][1])){
+      next
+    }
     print(sprintf("The air qaulity level at %s is %s", arslt$city, arslt$APL))
     rslt <- rbind(rslt, arslt)
   }
@@ -30,8 +33,8 @@ getPMbyCityNames <- function(citynames = "san jose"){
   dat <- tibble::as_tibble(rslt)
 
   if(length(citynames) > 1){
-    g <- ggplot2::ggplot(aes(x = reorder(city, pm25), y = pm25), data = na.omit(dat)) +
-      ggplot2::geom_bar(stat = "identity", color = "#E69F00", fill = "#E69F00") +
+    g <- ggplot2::ggplot(ggplot2::aes(x = reorder(city, pm25), y = pm25, fill=APL), data = dat) +
+      ggplot2::geom_bar(stat = "identity") + ggplot2::scale_fill_manual(values = getglobalPM25Options()$apl_color) +
       ggplot2::coord_flip()
     print(g)
   }

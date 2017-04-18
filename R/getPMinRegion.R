@@ -7,8 +7,8 @@
 #' @return a tibble
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr %>% arrange desc select
-#' @importFrom stats na.omit
-#' @importFrom ggplot2 qplot
+#' @importFrom ggplot2 ggplot aes scale_color_manual geom_point
+#' @importFrom stats complete.cases
 #' @export
 #' @examples
 #' \dontrun{getPMinRegion("beijing")} #require personal token
@@ -60,25 +60,29 @@ getPMinRegion <- function(cityname, distance = 50, geobound = NULL){
   rslt <- cbind("localtimezone" = localtimezone, rslt)
   rslt <- cbind("city" = paste(cityname, distance, sep = "-"), rslt)
   #browser()
+  
   rslt <- rslt %>% dplyr::select(uid, city, localtime, lat, lon, aqi, localtimezone)
   names(rslt)[6] <- "pm25"
   names(rslt)[1] <- "stationid"
   rslt$pm25 <- as.numeric(rslt$pm25)
   rslt$stationid <- as.numeric(rslt$stationid)
   apldesc <- getglobalPM25Options()$apl_description
+  #browser()
+  rslt <- rslt[complete.cases(rslt$pm25), ]
   apl <- sapply(rslt$pm25, function(x) if(is.na(x)) x else if(x>300L) apldesc[6L] else if(x>200L) apldesc[5L] else if(x>150L) apldesc[4L] else if(x>100L) apldesc[3L] else if(x>50) apldesc[2L]  else apldesc[1L])
-  apl <- as.character(apl)
+  apl <- factor(apl, levels = apldesc)
   rslt <- cbind(rslt, APL = apl)
-
   rslt <- rslt %>%
     dplyr::select(stationid, city, localtime, APL, pm25, lat, lon, localtimezone) %>%
     dplyr::arrange(desc(pm25))
   dat <- tibble::as_tibble(rslt)
 
-  #g <- ggplot2::ggplot(ggplot2::aes(x = lon, y = lat, size = pm25, colour = APL), data = na.omit(dat))
-  #g <- g + ggplot2::geom_point()
   #browser()
-  print(qplot(x = lon, y = lat, colour = APL, size = pm25, data = na.omit(dat)))
+  g <- ggplot2::ggplot(ggplot2::aes(x = lon, y = lat, size = pm25, colour = APL), data = dat)
+  g <- g + ggplot2::geom_point() + ggplot2::scale_color_manual(values=getglobalPM25Options()$apl_color)
+  print(g)
+  #browser()
+  #print(qplot(x = lon, y = lat, colour = APL, size = pm25, data = dat))
 
   dat
 }
