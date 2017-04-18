@@ -16,24 +16,28 @@ library(globalPM25)
 ## ---- fig.width=8, fig.height=4------------------------------------------
 require(globalPM25)
 data("worlddat")
+apldesc = getglobalPM25Options()$apl_description
+aplcolor = getglobalPM25Options()$apl_color
 mapWorld <- ggplot2::borders("world", colour="gray50", fill="gray50") # create a layer of borders
+worlddat$APL <- factor(worlddat$APL, levels = apldesc)
 g <- ggplot(aes(x = lon, y = lat, colour = APL, size = pm25), data = na.omit(worlddat)) +   mapWorld
-g <- g + geom_point()
+g <- g + geom_point() + scale_color_manual(values = aplcolor)
 g <- g + ggtitle("PM2.5 data collected from stations at a list of selected cities worldwide; \n the data are sampled at 4pm PST, March 19, 2017")
 g
 
 ## ---- fig.width=8, fig.height=4------------------------------------------
-g <- ggplot(aes(x = reorder(city, pm25), y = pm25, fill=factor(APL)), data = na.omit(worlddat)) +
-    geom_bar(stat = "identity") +
+g <- ggplot(aes(x = reorder(city, pm25), y = pm25, fill=APL), data = na.omit(worlddat)) +
+    geom_bar(stat = "identity") + scale_fill_manual(values = aplcolor) +
     coord_flip()
 g <- g + ggtitle("PM2.5 data collected from stations at a list of selected cities worldwide; \n the data are sampled at 4pm PST, March 19, 2017")
 g
 
 ## ---- fig.width=8, fig.height=4------------------------------------------
 data(usdat)
+usdat$APL <- factor(usdat$APL, levels = apldesc)
 mapUS <- ggplot2::borders("usa", colour="gray50", fill="gray50") # create a layer of borders
 g <- ggplot(aes(x = lon, y = lat, colour = APL, size = pm25), data = usdat) +   mapUS
-g <- g + geom_point()
+g <- g + geom_point() + scale_color_manual(values = aplcolor)
 g <- g + ggtitle("PM2.5 data collected from stations at continental USA; \n the data are sampled at 4pm PST, March 19, 2017
 ")
 g

@@ -7,7 +7,7 @@
 #' @return a tibble
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr %>% arrange desc select
-#' @importFrom ggplot2 ggplot aes scale_color_manual geom_point
+#' @importFrom ggplot2 ggplot aes scale_color_manual geom_point ggtitle
 #' @importFrom stats complete.cases
 #' @export
 #' @examples
@@ -80,6 +80,8 @@ getPMinRegion <- function(cityname, distance = 50, geobound = NULL){
   #browser()
   g <- ggplot2::ggplot(ggplot2::aes(x = lon, y = lat, size = pm25, colour = APL), data = dat)
   g <- g + ggplot2::geom_point() + ggplot2::scale_color_manual(values=getglobalPM25Options()$apl_color)
+  g <- g + ggplot2::ggtitle(paste('Query time', Sys.time(), Sys.timezone(), sep = ' '))
+  
   print(g)
   #browser()
   #print(qplot(x = lon, y = lat, colour = APL, size = pm25, data = dat))
