@@ -1,7 +1,8 @@
 #' get real-timePM2.5 level at a country
 #'
 #' @description Query real-time  PM2.5 levels at a country (default = U.S.)
-#' @param countryname a country name string
+#' @param countryname a string contains country name 
+#' @param countrybound country's geographical boundary 
 #' @return a tibble
 #' @importFrom tibble tibble
 #' @importFrom ggplot2 geom_point ggplot aes scale_color_manual ggtitle

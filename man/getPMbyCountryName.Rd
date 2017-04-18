@@ -7,7 +7,9 @@
 getPMbyCountryName(countryname = "usa", countrybound = c(50, -130, 25, -65))
 }
 \arguments{
-\item{countryname}{a country name string}
+\item{countryname}{a string contains country name}
+
+\item{countrybound}{country's geographical boundary}
 }
 \value{
 a tibble
@@ -16,5 +18,5 @@ a tibble
 Query real-time  PM2.5 levels at a country (default = U.S.)
 }
 \examples{
-\dontrun{getPMbyCountryName("san jose")} #require personal token
+\dontrun{getPMbyCountryName()} #require personal token
 }
