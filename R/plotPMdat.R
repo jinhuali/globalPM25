@@ -35,4 +35,5 @@ plotPMdat <- function(pauseplot = TRUE){
   g <- g + ggplot2::geom_point() + ggplot2::scale_color_manual(values = aplcolor)
   g <- g + ggplot2::ggtitle("PM2.5 data collected from stations at continental USA; \n the data are sampled at 4pm PST, March 19, 2017")
   print(g)
+  par(ask=FALSE)
 }

@@ -1,0 +1,17 @@
+#' get real-timePM2.5 level at a country
+#'
+#' @description Query real-time  PM2.5 levels at a country (default = U.S.)
+#' @param countryname a country name string
+#' @return a tibble
+#' @importFrom tibble tibble
+#' @importFrom ggplot2 geom_point ggplot aes scale_color_manual ggtitle
+#' @export
+#' @examples
+#' \dontrun{getPMbyCountryName()} #require personal token
+getPMbyCountryName <- function(countryname = "usa", countrybound = c(50, -130, 25, -65)){
+  dat <- getPMinRegion(geobound = countrybound)
+  map <- ggplot2::borders(countryname, colour="gray50", fill="gray50") # create a layer of borders
+  g <- ggplot2::ggplot(ggplot2::aes(x = lon, y = lat, colour = APL, size = pm25), data = dat[complete.cases(c(dat$pm25, dat$APL, dat$lat, dat$lon)),]) +   map
+  g <- g + ggplot2::geom_point() + ggplot2::scale_color_manual(values = getglobalPM25Options()$apl_color)
+  print(g)
+}

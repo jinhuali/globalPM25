@@ -1,6 +1,7 @@
 ~%2FBabelotus%2FglobalPM25%2FDESCRIPTION="645C7C6B"
 ~%2FBabelotus%2FglobalPM25%2FR%2FgetPMatMajorWorldCities.R="B86442DF"
 ~%2FBabelotus%2FglobalPM25%2FR%2FgetPMbyCityNames.R="CDBF9552"
+~%2FBabelotus%2FglobalPM25%2FR%2FgetPMbyCountryName.R="B0EC413A"
 ~%2FBabelotus%2FglobalPM25%2FR%2FgetPMbylatlon.R="FB41A3F9"
 ~%2FBabelotus%2FglobalPM25%2FR%2FgetPMinRegion.R="B9B6E2E7"
 ~%2FBabelotus%2FglobalPM25%2FR%2FgetPMnearme.R="221091D4"

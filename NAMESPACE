@@ -2,6 +2,7 @@
 
 export(getPMatMajorWorldCities)
 export(getPMbyCityNames)
+export(getPMbyCountryName)
 export(getPMbylatlon)
 export(getPMinRegion)
 export(getPMnearme)
