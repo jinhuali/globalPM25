@@ -1,7 +1,7 @@
-#' get real-time PM2.5 within a city region or within a geographic boundary
+#' get real-time PM2.5 within a geographic boundary
 #'
-#' @description get real-time PM2.5 levels of all the stations within a city region (default \code{distance} 50 miles) or geographical bound in the format c(lat1, lon1, lat2, lon2). Return local time, station location and PM2.5 level. The results are sorted by PM2.5 levels
-#' @param cityname character
+#' @description get real-time PM2.5 levels of all the stations with a geographical boundary in the format of (a) centroid = c(lat, lon) and distance (default = 50 miles) or (b) geobound = c(lat1, lon1, lat2, lon2). Return local time, station location and PM2.5 level. The results are sorted by PM2.5 levels
+#' @param centroid geographical location represented by latitude and longitude
 #' @param distance double
 #' @param geobound numeric vector of length 4L in the format c(lat1, lon1, lat2, lon2)
 #' @return a tibble
@@ -11,23 +11,19 @@
 #' @importFrom stats complete.cases
 #' @export
 #' @examples
-#' \dontrun{getPMinRegion("beijing")} #require personal token
-#' \dontrun{getPMinRegion("beijing", 200)}
 #' \dontrun{getPMinRegion(geobound = c(38.164368, -122.85501, 37.203647, -121.431634))} #san francisco bay area
-getPMinRegion <- function(cityname, distance = 50, geobound = NULL){
-  if(!missing(cityname) && distance <= 0){
+getPMinRegion <- function(centroid, distance = 50, geobound){
+  if(!missing(centroid) && distance <= 0){
     stop("range must be greater than zero")
   }
-
+  
+  cityname = "NA"
   localtimezone <- NA
   localtime <- NA
-  if(!missing(cityname)){
-    mycitypm <- getPMbyCityNames(cityname)
-    lat <- mycitypm$lat
-    lon <- mycitypm$lon
-    localtime <- as.character(mycitypm$localtime)
-    localtimezone <- as.character(mycitypm$localtimezone)
-    #UTCtime <- mycitypm$UTCtime
+  #browser()
+  if(!missing(centroid)){
+    lat <- centroid[1]
+    lon <- centroid[2]
     dlat = distance/68.69/2 #miles
     dlon = distance/(69.17*cos(lat))/2
     dlat = abs(dlat)
@@ -38,7 +34,6 @@ getPMinRegion <- function(cityname, distance = 50, geobound = NULL){
       stop("incorrect geobound input")
     }
     geobound = c(min(geobound[1], geobound[3]), min(geobound[2], geobound[4]), max(geobound[1], geobound[3]), max(geobound[2], geobound[4]))
-    cityname = "NA"
     distance = 0
   }else{
     stop("missing argument")
@@ -49,7 +44,7 @@ getPMinRegion <- function(cityname, distance = 50, geobound = NULL){
   if(mydata$status != "ok"){
     stop(mydata$data)
   }else if(length(mydata$data) == 0L){
-    stop("Empty data")
+    return(data.frame())
   }
 
   #browser()

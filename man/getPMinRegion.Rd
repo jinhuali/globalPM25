@@ -2,12 +2,12 @@
 % Please edit documentation in R/getPMinRegion.R
 \name{getPMinRegion}
 \alias{getPMinRegion}
-\title{get real-time PM2.5 within a city region or within a geographic boundary}
+\title{get real-time PM2.5 within a geographic boundary}
 \usage{
-getPMinRegion(cityname, distance = 50, geobound = NULL)
+getPMinRegion(centroid, distance = 50, geobound)
 }
 \arguments{
-\item{cityname}{character}
+\item{centroid}{geographical location represented by latitude and longitude}
 
 \item{distance}{double}
 
@@ -17,10 +17,8 @@ getPMinRegion(cityname, distance = 50, geobound = NULL)
 a tibble
 }
 \description{
-get real-time PM2.5 levels of all the stations within a city region (default \code{distance} 50 miles) or geographical bound in the format c(lat1, lon1, lat2, lon2). Return local time, station location and PM2.5 level. The results are sorted by PM2.5 levels
+get real-time PM2.5 levels of all the stations with a geographical boundary in the format of (a) centroid = c(lat, lon) and distance (default = 50 miles) or (b) geobound = c(lat1, lon1, lat2, lon2). Return local time, station location and PM2.5 level. The results are sorted by PM2.5 levels
 }
 \examples{
-\dontrun{getPMinRegion("beijing")} #require personal token
-\dontrun{getPMinRegion("beijing", 200)}
 \dontrun{getPMinRegion(geobound = c(38.164368, -122.85501, 37.203647, -121.431634))} #san francisco bay area
 }
