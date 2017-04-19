@@ -80,7 +80,7 @@ getPMinRegion <- function(cityname, distance = 50, geobound = NULL){
   #browser()
   g <- ggplot2::ggplot(ggplot2::aes(x = lon, y = lat, size = pm25, colour = APL), data = dat)
   g <- g + ggplot2::geom_point() + ggplot2::scale_color_manual(values=getglobalPM25Options()$apl_color)
-  g <- g + ggplot2::ggtitle(paste('Query time', Sys.time(), Sys.timezone(), sep = ' '))
+  g <- g + ggplot2::ggtitle(paste('Query at', Sys.time(), Sys.timezone(), sep = ' '))
   
   print(g)
   #browser()

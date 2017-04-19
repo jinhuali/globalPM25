@@ -55,10 +55,23 @@ There are 2 data sets, which are:
 
 1. `worlddat.rda`: this contains PM2.5 data collected from a list of large cities worldwide using `getPMatMajorWorldCities()`. the data are collected at 4pm PST, March 19, 2017
 
-## Example
+## Examples
 ![PM2.5 data collected from stations at a list of selected cities worldwide; the data are sampled at 4pm PST, March 19, 2017)](vignettes/sampleworlddat.png)
 ![PM2.5 data collected from stations at a list of selected cities worldwide; the data are sampled at 4pm PST, March 19, 2017)](vignettes/sampleworldcityrankings.png)
 ![EPA PM2.5 standard (APL=Air Quality Index Levels of Health Concern, AQI=Numeric Value)](vignettes/sampleUSdat.png)
+
+Some real-time PM2.5 data at different countries and cities
+
+![United States](vignettes/usa.png)
+
+![China](vignettes/china.png)
+
+![London, England](vignettes/London.png)
+
+![Mumbai, India](vignettes/Mumbai.png)
+
+![Beijing, China](vignettes/beijing.png)
+
 
 ## Conclusion and Future work
 First of all, I would like to thank WAQ for making the data available. This package allows users to access real-time air pollute PM2.5 level in various ways: near the user, at any city, at any location, and/or in a region. Basic sorting and plot are implemented. The package was built using R studio with devtools and shared at [github](https://github.com/jinhuali/globalPM25). 
