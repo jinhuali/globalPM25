@@ -69,6 +69,10 @@ There are 10 functions/.R files in the package. Below are the names and a short 
 
 1. `getPMatMajorWorldCities()`: similar to `getPMbyCityNames` but the cities are pre-selected major cities around the world. the city names can be listed using `getglobalPM25Options()` and set using `setworldcities(citynames)` in `global.R`. 
 
+1. `getPM_Country(countryname, countrybound)`: similar to `getPMinRegion` using google map
+
+1. `getPM_City(cityname, radius)`: similar to `getPMinRegion` using google map
+
 1. `plotPMdat()`: demo to plot some results
 
 1. `zzz.R`: use to suppress no global variable binding note. 

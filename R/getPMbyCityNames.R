@@ -36,7 +36,7 @@ getPMbyCityNames <- function(citynames = "san jose"){
     g <- ggplot2::ggplot(ggplot2::aes(x = reorder(city, pm25), y = pm25, fill=APL), data = dat) +
       ggplot2::geom_bar(stat = "identity") + ggplot2::scale_fill_manual(values = getglobalPM25Options()$apl_color) +
       ggplot2::coord_flip() +
-      ggplot2::ggtitle(paste('Querty at', Sys.time(), Sys.timezone(), sep = ' '))
+      ggplot2::ggtitle(paste('Quertied at', Sys.time(), Sys.timezone(), sep = ' '))
     print(g)
   }
 

@@ -74,6 +74,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 
+<pre><code>## 
+## Attaching package: 'globalPM25'</code></pre>
+<pre><code>## The following objects are masked _by_ '.GlobalEnv':
+## 
+##     usdat, worlddat</code></pre>
 <p>This package is developed for users to access and plot real-time air pollute PM2.5 level near you, at a city, at any location, or in a region around the world. The purpose is to increase overall awareness about the dangerous of air pollution to human health, particularly in some developing countries.</p>
 <div id="what-is-pm2.5-and-why-it-is-dangerous-to-you-and-your-familys-health" class="section level2">
 <h2>What is PM2.5 and why it is dangerous to you and your family’s health</h2>
@@ -106,6 +111,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p><code>getPMnearme()</code>: similar to <code>getPMbyCityNames</code> but query by a station closest to you based on computer IP address.</p></li>
 <li><p><code>getPMinRegion()</code>: similar to <code>getPMbyCityNames</code> but query by a list of stations in a region. The region can be defined in two ways: a) <code>getPMinRegion(cityname, distance)</code> a city name and a distance range. b) <code>getPMinRegion(geobound = c(lat1, lon1, lat2, lon2))</code> a rectangular boundary defined by a pair of latitudes and longitudes at opposite corners.</p></li>
 <li><p><code>getPMatMajorWorldCities()</code>: similar to <code>getPMbyCityNames</code> but the cities are pre-selected major cities around the world. the city names can be listed using <code>getglobalPM25Options()</code> and set using <code>setworldcities(citynames)</code> in <code>global.R</code>.</p></li>
+<li><p><code>getPM_Country(countryname, countrybound)</code>: similar to <code>getPMinRegion</code> using google map</p></li>
+<li><p><code>getPM_City(cityname, radius)</code>: similar to <code>getPMinRegion</code> using google map</p></li>
 <li><p><code>plotPMdat()</code>: demo to plot some results</p></li>
 <li><p><code>zzz.R</code>: use to suppress no global variable binding note.</p></li>
 <li><p><code>global.R</code>: set access to some variables such as token string, WAQ URL string, etc.</p></li>
