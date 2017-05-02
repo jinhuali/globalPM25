@@ -1,0 +1,45 @@
+################################ plot station distribution
+
+require(gridExtra)
+
+countryname = "United States"
+countrybound = c(50, -130, 25, -65)
+dat <- getPMinRegion(geobound = countrybound)
+#map <- ggplot2::borders(countryname, colour="gray50", fill="gray50") # create a layer of borders
+entry <- as.numeric(ggmap::geocode(countryname))
+map <- ggmap::ggmap(ggmap::get_googlemap(center = entry, scale = 2, zoom = 4), extent = "normal")
+g1 <- map
+g1 <- g1 + ggplot2::geom_point(ggplot2::aes(x = lon, y = lat), colour = "#D55E00", data = dat[complete.cases(c(dat$lat, dat$lon)),]) 
+
+countryname = 'China'
+countrybound = c(55, 75, 20, 130)
+dat <- getPMinRegion(geobound = countrybound)
+#map <- ggplot2::borders(countryname, colour="gray50", fill="gray50") # create a layer of borders
+entry <- as.numeric(ggmap::geocode(countryname))
+map <- ggmap::ggmap(ggmap::get_googlemap(center = entry, scale = 2, zoom = 4), extent = "normal")
+g2 <- map
+g2 <- g2 + ggplot2::geom_point(ggplot2::aes(x = lon, y = lat), colour = "#D55E00", data = dat[complete.cases(c(dat$lat, dat$lon)),]) 
+
+countryname = "India"
+countrybound = c(35, 70, 10, 90)
+dat <- getPMinRegion(geobound = countrybound)
+#map <- ggplot2::borders(countryname, colour="gray50", fill="gray50") # create a layer of borders
+entry <- as.numeric(ggmap::geocode(countryname))
+map <- ggmap::ggmap(ggmap::get_googlemap(center = entry, scale = 2, zoom = 4), extent = "normal")
+g3 <- map
+g3 <- g3 + ggplot2::geom_point(ggplot2::aes(x = lon, y = lat), colour = "#D55E00", data = dat[complete.cases(c(dat$lat, dat$lon)),]) 
+
+
+countryname = "Africa"
+countrybound = c(20, 10, -30, 60)
+dat <- getPMinRegion(geobound = countrybound)
+#map <- ggplot2::borders(countryname, colour="gray50", fill="gray50") # create a layer of borders
+entry <- as.numeric(ggmap::geocode(countryname))
+map <- ggmap::ggmap(ggmap::get_googlemap(center = entry, scale = 2, zoom = 4), extent = "normal")
+g4 <- map
+g4 <- g4 + ggplot2::geom_point(ggplot2::aes(x = lon, y = lat), colour = "#D55E00", data = dat[complete.cases(c(dat$lat, dat$lon)),]) 
+
+
+grid.arrange(g1, g2, g3, g4, ncol=2, bottom = "Active public air quality stations on May 1, 2017 ")
+
+
