@@ -65,7 +65,7 @@ getPMinRegion <- function(centroid, distance = 50, geobound){
   #browser()
   rslt <- rslt[complete.cases(rslt$pm25), ]
   apl <- sapply(rslt$pm25, function(x) if(is.na(x)) x else if(x>300L) apldesc[6L] else if(x>200L) apldesc[5L] else if(x>150L) apldesc[4L] else if(x>100L) apldesc[3L] else if(x>50) apldesc[2L]  else apldesc[1L])
-  apl <- factor(apl, levels = apldesc)
+  apl <- factor(apl, levels = apldesc, ordered = TRUE)
   rslt <- cbind(rslt, APL = apl)
   rslt <- rslt %>%
     dplyr::select(stationid, city, localtime, APL, pm25, lat, lon, localtimezone) %>%
@@ -74,7 +74,7 @@ getPMinRegion <- function(centroid, distance = 50, geobound){
 
   #browser()
   g <- ggplot2::ggplot(ggplot2::aes(x = lon, y = lat, size = pm25, colour = APL), data = dat)
-  g <- g + ggplot2::geom_point() + ggplot2::scale_color_manual(values=getglobalPM25Options()$apl_color)
+  g <- g + ggplot2::geom_point() + ggplot2::scale_color_manual(values=getglobalPM25Options()$apl_color[sort(unique(dat$APL))])
   g <- g + ggplot2::ggtitle(paste('Queried at', Sys.time(), Sys.timezone(), sep = ' '))
   
   print(g)

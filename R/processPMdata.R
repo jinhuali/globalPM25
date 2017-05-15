@@ -37,7 +37,7 @@ processPMdata <- function(mydata){
     mypm25 <- as.numeric(mydata$data$iaqi$pm25$v)
     apldesc <- getglobalPM25Options()$apl_description
     apl <- if(mypm25>300L) apldesc[6L] else if(mypm25>200L) apldesc[5L] else if(mypm25>150L) apldesc[4L] else if(mypm25>100L) apldesc[3L] else if(mypm25>50) apldesc[2L]  else apldesc[1L]
-    apl <- factor(apl, levels = apldesc)
+    apl <- factor(apl, levels = apldesc, ordered = TRUE)
   }else{
     return(NA)
   }

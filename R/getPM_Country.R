@@ -19,7 +19,7 @@ getPM_Country <- function(countryname = "United States", countrybound = c(50, -1
   entry <- as.numeric(ggmap::geocode(countryname))
   map <- ggmap::ggmap(ggmap::get_googlemap(center = entry, scale = 2, zoom = 4), extent = "normal")
   g <- map
-  g <- g + ggplot2::geom_point(ggplot2::aes(x = lon, y = lat, colour = APL, size = pm25), data = dat[complete.cases(c(dat$pm25, dat$APL, dat$lat, dat$lon)),]) + ggplot2::scale_color_manual(values = getglobalPM25Options()$apl_color)
+  g <- g + ggplot2::geom_point(ggplot2::aes(x = lon, y = lat, colour = APL, size = pm25), data = dat[complete.cases(c(dat$pm25, dat$APL, dat$lat, dat$lon)),]) + ggplot2::scale_color_manual(values = getglobalPM25Options()$apl_color[sort(unique(dat$APL))])
   g <- g + ggplot2::ggtitle(paste('Queried at', Sys.time(), Sys.timezone(), sep = ' '))
   print(g)
   dat
