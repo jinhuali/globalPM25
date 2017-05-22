@@ -12,7 +12,7 @@
 #' @examples
 #' \dontrun{getPM()} #require personal token
 #' \dontrun{getPM(locationname = 'forbidden city')}
-getPM <- function(locationname = 'New York', radius = 20,  zoomlevel = 10){
+getPM <- function(locationname = 'New York', radius = 10,  zoomlevel = 11){
   #map <- ggplot2::borders(countryname, colour="gray50", fill="gray50") # create a layer of borders
   entry <- as.numeric(ggmap::geocode(locationname)) # longitude and latitude
   dat <- getPMinRegion(centroid = c(entry[2], entry[1]), distance = radius)
