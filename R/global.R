@@ -11,7 +11,11 @@ globalPM25.options <- list(token = "demo",
                                             'manila', 'buenos aires', 'seattle', 'dubai', 'sydney', 'melbourne',
                                             'singapore', 'madrid', 'chennai', 'kolkata', 'osaka', 'bangalore',
                                             'kuala lumpur', 'milan', 'berlin', 'Tel Aviv', 'lisbon', 'Vancouver', 'toronto', 'Munich',
-                                            'Copenhagen'))
+                                            'Copenhagen'),
+                           worlduids = c('7020','5573','5508','7024','8647','5722','3330','1437','1451','3308','4143',
+                                         '5724','1597','5773','7397','3308','4143','5724','1597','5773','7397','3309','8259','8397',
+                                         '5855','3250','3246','1663','5725','8191','7023','7021','5543','8191','5780','9118',
+                                         '6132','5783','8379','4230','5914','6037','3317'))
 
 #' Reset the global package variable \code{globalPM25.options}
 #'

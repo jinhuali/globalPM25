@@ -12,13 +12,16 @@
 #' @examples
 #' \dontrun{getPMbyCityNames("san jose")} #require personal token
 #' \dontrun{getPMbyCityNames(c("tokyo", "madrid"))}  
-getPMbyCityNames <- function(citynames = "san jose"){
+getPMbyCityNames <- function(uids){
   baseURL = getglobalPM25Options()$baseURL
   atoken = getglobalPM25Options()$token
 
   rslt <- list()
-  for(cityname in citynames){
-    mydata <- jsonlite::fromJSON(sprintf("%s/feed/%s/?token=%s", baseURL, cityname, atoken), flatten=TRUE)
+  for(uid in uids){
+    mydata <- jsonlite::fromJSON(sprintf("%s/feed/@%s/?token=%s", baseURL, uid, atoken), flatten=TRUE)
+    if(mydata$status!='ok'){
+      next
+    }
     arslt <- processPMdata(mydata)
     if(is.na(arslt[1][1])){
       next
@@ -32,7 +35,7 @@ getPMbyCityNames <- function(citynames = "san jose"){
     dplyr::arrange(desc(pm25))
   dat <- tibble::as_tibble(rslt)
 
-  if(length(citynames) > 1){
+  if(length(uids) > 1){
     g <- ggplot2::ggplot(ggplot2::aes(x = reorder(city, pm25), y = pm25, fill=APL), data = dat) +
       ggplot2::geom_bar(stat = "identity") + ggplot2::scale_fill_manual(values = getglobalPM25Options()$apl_color[sort(unique(dat$APL))]) +
       ggplot2::coord_flip() +
